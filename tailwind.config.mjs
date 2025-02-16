@@ -7,7 +7,7 @@ export default {
 				'3xl': '1920px'
 			  },
 			  fontFamily: {
-				manrope: ['Manrope']
+				inter: ['Inter']
 			  }		
 		},
 	},
