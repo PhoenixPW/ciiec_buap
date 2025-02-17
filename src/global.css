@@ -16,16 +16,16 @@
 
 .swiper-pagination-bullet {
     border-radius: 100%;
-    width:22px;
-    height:22px;
+    width:16px;
+    height:16px;
     transition: background-color 0.3s;
     background-color: #CECECE;
 }
 
 .swiper-pagination-bullet-active {
-    background-color: #131C4C; /* Color oscuro para el bullet activo */
-    width: 22px;
-    height: 22x;
+    background-color: #0C8CE9; /* Color oscuro para el bullet activo */
+    width: 16px;
+    height: 16x;
   }
 
 
