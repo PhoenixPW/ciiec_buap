@@ -1,5 +1,7 @@
 # build output
 dist/
+deploy/
+deploy.rar
 
 # generated types
 .astro/
