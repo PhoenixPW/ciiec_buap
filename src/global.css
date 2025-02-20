@@ -15,7 +15,11 @@
 }
 
 .swiper {
-  padding: 0px 47px !important;
+  padding: 0px 44px !important;
+}
+
+.swiper-slide img{
+ padding: 0px 16px !important; 
 }
 
 /* Flechas */
