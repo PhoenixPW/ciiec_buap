@@ -30,6 +30,15 @@
   transform: translateY(-50%) !important;
 }
 
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  transition: all 200ms;
+  color: #6b7280bf !important;            /* color de las flechas */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+
 .swiper-button-next {
   transform: translateX(6px) !important;
   top: 50% !important;
@@ -44,18 +53,25 @@
 
 .swiper-pagination-bullet {
     border-radius: 100%;
-    width:16px;
-    height:16px;
+    width:15px;
+    height:15px;
     transition: background-color 0.3s;
     background-color: #CECECE;
 }
 
 .swiper-pagination-bullet-active {
     background-color: #0C8CE9; /* Color oscuro para el bullet activo */
-    width: 16px;
-    height: 16x;
+    width: 15px;
+    height: 15x;
   }
 
+@media (width<=1280px) {
+ .swiper-pagination-bullet,
+ .swiper-pagination-bullet-active{
+  width: 12px !important;
+  height: 12px !important;
+ }
+}
 
 
   @layer base {
