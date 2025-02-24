@@ -22,7 +22,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-background text-foreground antialiased dark">
+	<body class="flex flex-col bg-background text-foreground antialiased dark">
 		<Navbar/>
 		<MouseMoveEffect client:idle></MouseMoveEffect>
 		<slot />
