@@ -3,13 +3,13 @@
 var noticias = [{
                  "titulo":"CONGRESO INTERNACIONAL MUNDO TOTONACO",
                  "fecha":"Del 13 al 16 de Noviembre del 2024",
-                 "imagen":"/slider1.png"
+                 "imagen":"/slider1.jpg"
                 },
                 {
 
                  "titulo":"CURSO DE ESPERANTO",
                  "fecha":"Inicia el 2 de Octubre del 2024",
-                 "imagen":"/slider2.png"
+                 "imagen":"/slider2.jpg"
                 },
                 {
 
@@ -63,9 +63,9 @@ var noticias = [{
      <div class="swiper-slide">
        <article class="flex flex-col h-full gap-4 justify-center">
          <img class="w-full object-center " src={noticia.imagen}/>
-         <div class="flex flex-col bottom-0 gap-3 ju"> 
-          <h3 class="px-4 text-3xl font-bold">{noticia.titulo}</h3>
-          <p class="px-4 text-lg">{noticia.fecha}</p>
+         <div class="flex flex-col bottom-0 gap-3"> 
+          <h3 class="px-4 text-3xl xs:text-xl font-bold">{noticia.titulo}</h3>
+          <p class="px-4 text-lg xs:text-sm">{noticia.fecha}</p>
          </div>
    
        </article>
@@ -75,7 +75,7 @@ var noticias = [{
     }
     </div>
     <div class="swiper-pagination" ></div>
-    <a href="#" class=" flex gap-0 pt-7 justify-center md:text-sm lg:text-xs xl:text-sm 2xl:text-sm 3xl:text-lg font-medium ">
+    <a href="#" class=" flex gap-0 pt-7 justify-center xs:text-sm md:text-sm lg:text-xs xl:text-sm 2xl:text-sm 3xl:text-lg font-medium ">
      <p class="z-10 peer text-white hover:text-gray-500/75 transition-all duration-200"> VER TODAS</p> 
    
      <svg class="w-7 lg:w-6 xl:w-7 3xl:w-9 -translate-y-1 peer-hover:text-gray-500/75 transition-all duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 7L15 12L10 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>

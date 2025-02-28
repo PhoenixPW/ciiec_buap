@@ -22,6 +22,11 @@
  height: 73vh !important; 
 }
 
+@media (max-width: 550px) and (max-height: 750px){
+ .swiper2 .swiper-slide{
+  height:80vh !important;
+ }
+}
  
 .swiper-slide img{
  padding: 0px 16px !important; 

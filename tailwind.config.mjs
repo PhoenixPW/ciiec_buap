@@ -4,6 +4,7 @@ export default {
 	theme: {
 		extend: {
 			screens:{
+				'xs': { 'raw': '(max-width:550px) and (max-height:750px)' },
 				'3xl': '1920px'
 			  },
 			  fontFamily: {
