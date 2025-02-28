@@ -1,0 +1,121 @@
+---
+
+var noticias = [{
+                 "titulo":"CONGRESO INTERNACIONAL MUNDO TOTONACO",
+                 "fecha":"Del 13 al 16 de Noviembre del 2024",
+                 "imagen":"/slider1.png"
+                },
+                {
+
+                 "titulo":"CURSO DE ESPERANTO",
+                 "fecha":"Inicia el 2 de Octubre del 2024",
+                 "imagen":"/slider2.png"
+                },
+                {
+
+                 "titulo":"LIBRO: MEXICO CUANTICO",
+                 "fecha":"21 de Agosto del 2024",
+                 "imagen":"/slider3.png"
+                },
+                {
+
+                 "titulo":"CONFERENCIA PARA MUJERES ESTUDIANTES DE FISICA",
+                 "fecha":"Del 23 al 25 de Octubre del 2023",
+                 "imagen":"/slider4.jpg"
+                },
+                {
+
+                 "titulo":"PREMIO NOBEL DE FISICA 2024",
+                 "fecha":"11 de Octubre del 2024",
+                 "imagen":"/slider5.png"
+                },
+                {
+
+                 "titulo":"TALLER DE AUTOMATIZACIÓN DE CÁLCULOS EN FÍSICA DE PARTÍCULAS",
+                 "fecha":"Del 30 de Mayo al 02 de Junio del 2022",
+                 "imagen":"/slider6.jpg"
+                },
+                {
+
+                 "titulo":"ChatGPT: ¿QUÉ ES Y COMO PUEDO USARLO?",
+                 "fecha":"03 de Mayo del 2023",
+                 "imagen":"/slider7.png"
+                },
+                {
+
+                 "titulo":"CONVOCATORIA AL SNI DE CONAHCyT 2023",
+                 "fecha":"Del 29 de Mayo al 16 de Junio del 2023",
+                 "imagen":"/slider8.png"
+                },
+                
+]
+
+---
+
+<section class="sm:hidden swiper2 relative" >
+
+    <div class="swiper-wrapper">
+
+     
+    {
+     noticias.map((noticia) =>
+     (
+     <div class="swiper-slide">
+       <article class="flex flex-col h-full gap-4 justify-center">
+         <img class="w-full object-center " src={noticia.imagen}/>
+         <div class="flex flex-col bottom-0 gap-3 ju"> 
+          <h3 class="px-4 text-3xl font-bold">{noticia.titulo}</h3>
+          <p class="px-4 text-lg">{noticia.fecha}</p>
+         </div>
+   
+       </article>
+     </div>
+     )
+     )
+    }
+    </div>
+    <div class="swiper-pagination" ></div>
+    <a href="#" class=" flex gap-0 pt-7 justify-center md:text-sm lg:text-xs xl:text-sm 2xl:text-sm 3xl:text-lg font-medium ">
+     <p class="z-10 peer text-white hover:text-gray-500/75 transition-all duration-200"> VER TODAS</p> 
+   
+     <svg class="w-7 lg:w-6 xl:w-7 3xl:w-9 -translate-y-1 peer-hover:text-gray-500/75 transition-all duration-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 7L15 12L10 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+   
+    </a>
+   
+   
+   
+   </section>
+   
+   <script>
+       // Core de Swiper y estilos
+       import Swiper from 'swiper';
+       import 'swiper/css';
+       // Módulo Navigation de Swiper y estilos
+       import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper/modules";
+       import "swiper/css/navigation";
+     
+       // Configurar Swiper
+       const swiper = new Swiper(".swiper2", {
+           slidesPerView:1,
+   spaceBetween:0,
+   slidesPerGroup:1,
+   centeredSlides:false,
+   grabCursor:true,
+   scrollbar:false,
+   loop:true,
+   autoplay:{
+       delay:1000,
+   },
+   navigation:{
+    nextEl:".swiper-button-next",
+    prevEl:".swiper-button-prev"
+   },
+   pagination:{
+     el: ".swiper-pagination",
+     clickable: true,
+   },
+   modules:[Keyboard, Scrollbar, Navigation, Pagination]
+   
+       });
+   
+     </script>

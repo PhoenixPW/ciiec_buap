@@ -18,6 +18,11 @@
   padding: 0px 44px !important;
 }
 
+.swiper2 .swiper-slide{
+ height: 73vh !important; 
+}
+
+ 
 .swiper-slide img{
  padding: 0px 16px !important; 
 }
