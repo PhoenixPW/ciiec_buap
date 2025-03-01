@@ -1,5 +1,99 @@
-<header class="fixed top-0 left-0 right-0 z-10 border-b border-white/10 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 w-full">
-    <div class=" flex my-6 xs:my-4 sm:my-3 xl:my-3 3xl:my-7 mx-5 sm:mx-5 md:mx-6 lg:mx-12 xl:mx-16 justify-between sm:justify-between items-center">
+---
+
+var opcionesMenu = [
+                    {
+                     "nombre": "Nosotros",
+                     "direccion": "",
+                     "subcategorias": [
+                      {
+                       "nombre":"Misión y Visión",
+                       "direccion":""
+                      },
+                      {
+                       "nombre":"Objetivo",
+                       "direccion":""
+                      },
+                      {
+                       "nombre":"Miembros",
+                       "direccion":""
+                      },
+                      {
+                       "nombre":"Contacto",
+                       "direccion":""
+                      },
+                     ]
+                    },
+                    {
+                     "nombre": "Ejes",
+                     "direccion": "",
+                     "subcategorias": [
+                      {
+                       "nombre":"Fundamentos y tecnología cuántica",
+                       "direccion":""
+                      },
+                      {
+                       "nombre":"Salud digital y planetaria",
+                       "direccion":""
+                      },
+                      {
+                       "nombre":"Interculturalidad y diálogo de saberes",
+                       "direccion":""
+                      },
+                     ]
+                    },
+                    {
+                     "nombre": "Investigación",
+                     "direccion": "",
+                     "subcategorias": [
+                      {
+                       "nombre":"Seminarios",
+                       "direccion":""
+                      },
+                      {
+                       "nombre":"Colaboración",
+                       "direccion":""
+                      },
+                      {
+                       "nombre":"Software",
+                       "direccion":""
+                      },
+                     ]
+                    },
+                    {
+                     "nombre": "Educación y divulgación",
+                     "direccion": "",
+                     "subcategorias": [
+                      {
+                       "nombre":"Diplomados",
+                       "direccion":""
+                      },
+                      {
+                       "nombre":"Talleres",
+                       "direccion":""
+                      },
+                      {
+                       "nombre":"Simposios",
+                       "direccion":""
+                      },
+                      {
+                       "nombre":"Cursos",
+                       "direccion":""
+                      },
+                     ]
+                    },
+
+
+
+]
+
+---
+
+
+
+
+
+<header id="ventanaNavbar" class="fixed top-0 left-0 right-0 z-10 border-b border-white/10 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 w-full h-[105px] xs:h-[82px] transition-all duration-500">
+    <div id="menuCerrado" class="flex my-6 xs:my-4 sm:my-3 xl:my-3 3xl:my-7 mx-5 sm:mx-5 md:mx-6 lg:mx-12 xl:mx-16 justify-between sm:justify-between items-center opacity-100 transition-all">
 
       <div class="flex gap-4 sm:gap-5 lg:gap-9 items-center justify-center">
           <a href="https://www.buap.mx/">
@@ -15,7 +109,7 @@
         <div class="flex items-center gap-4 justify-center">
 
           <div class="block sm:hidden">
-            <button class="rounded bg-transparent p-2 text-white transition hover:text-gray-600/75">
+            <button id="botonNavbar" class="rounded bg-transparent p-2 text-white transition hover:text-gray-600/75">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="size-10 xs:size-8"
@@ -195,4 +289,123 @@
 
   </div>
 
+  <nav id="menuMobile" class="absolute top-0 w-full flex flex-col px-6 gap-12 xs:gap-3 opacity-0 pointer-events-none transition-all duration-1000">
+   <img src="/heroCIIEC.png" class="w-[29%] pt-16">
+
+
+   <svg id="botonCerrar" xmlns="http://www.w3.org/2000/svg"  class="absolute top-9 right-5 w-8 fill-current " viewBox="0 -960 960 960" ><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+
+   <ul class="flex flex-col font-inter divide-y-[1px] divide-gray-50 gap-5">
+
+    <li class="flex flex-col gap-5 pt-3">
+      <a href="/" class="flex justify-between items-center font-bold">
+        <p class="text-lg xs:text-base">Inicio</p>
+      </a>
+  
+
+    </li>
+
+    {
+     opcionesMenu.map( (opcion, numero) => (
+     <li class="flex flex-col gap-5 pt-3">
+
+
+     
+     <div onclick={'mostrarSubcategorias('+(numero)+')'} class="flex justify-between items-center font-bold">
+      <p class="text-lg xs:text-base"> {opcion.nombre} </p>
+
+
+        <svg id={"flecha"+numero} xmlns="http://www.w3.org/2000/svg"  class="w-5 fill-current transition-all rotate-0 " viewBox="0 -960 960 960" ><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg>
+     </div>
+
+
+
+     <ul id={"c"+numero} class="h-0 hidden flex-col pl-3 divide-y-[1px] text-[#ffffffcc] divide-[#ffffff4d] gap-3 transition-[#] duration-1000">
+       {
+        opcion?.subcategorias?.map( subcategoria => 
+        (
+         <li class="flex justify-between items-center pt-2">
+          
+
+          <p class="xs:text-sm"> {subcategoria.nombre}</p>
+
+          <svg xmlns="http://www.w3.org/2000/svg"  class="w-4 fill-current " viewBox="0 -960 960 960" ><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>  
+
+         </li>
+
+        )
+        )
+       }
+       <li></li> 
+      </ul>
+      </li>
+      )
+     )
+    }
+    <li></li>
+
+   </ul>
+
+  </nav>
+
 </header>
+
+
+<script>
+ 
+ var categoriaActiva = 0;
+ window.mostrarSubcategorias = function(numeroCategoria) {
+
+    document.getElementById("c"+categoriaActiva).classList.remove("flex");
+    document.getElementById("c"+categoriaActiva).classList.remove("h-auto");
+    document.getElementById("c"+categoriaActiva).classList.add("h-0");
+    document.getElementById("c"+categoriaActiva).classList.add("hidden");
+
+    document.getElementById("flecha"+categoriaActiva).classList.remove("rotate-90");
+    document.getElementById("flecha"+categoriaActiva).classList.add("rotate-0");
+
+
+  document.getElementById("c"+numeroCategoria).classList.remove("hidden");
+  document.getElementById("c"+numeroCategoria).classList.remove("h-0");
+  document.getElementById("c"+numeroCategoria).classList.add("flex");
+  document.getElementById("c"+numeroCategoria).classList.add("h-auto");
+  document.getElementById("flecha"+numeroCategoria).classList.add("rotate-90");
+  document.getElementById("flecha"+numeroCategoria).classList.remove("rotate-0");
+  categoriaActiva = numeroCategoria;
+ }
+
+ document.getElementById("botonNavbar").addEventListener("click", (event) => {
+  document.getElementById("menuCerrado").classList.remove("opacity-100");
+  document.getElementById("menuCerrado").classList.add("pointer-events-none");
+  document.getElementById("menuCerrado").classList.add("opacity-0");
+
+  document.getElementById("ventanaNavbar").classList.remove("h-[105px]");
+  document.getElementById("ventanaNavbar").classList.remove("xs:h-[82px]");
+  document.getElementById("ventanaNavbar").classList.add("h-screen");
+  
+  document.getElementById("menuMobile").classList.remove("opacity-0");
+  document.getElementById("menuMobile").classList.remove("pointer-events-none");
+  document.getElementById("menuMobile").classList.add("opacity-100");
+  document.getElementById("menuMobile").classList.add("pointer-events-auto");
+  
+  
+ })
+
+ document.getElementById("botonCerrar").addEventListener("click", (event) => {
+   document.getElementById("menuCerrado").classList.remove("opacity-0");
+   document.getElementById("menuCerrado").classList.remove("pointer-events-none");
+   document.getElementById("menuCerrado").classList.add("opacity-100");
+   document.getElementById("ventanaNavbar").classList.remove("h-screen");
+   document.getElementById("ventanaNavbar").classList.add("h-[105px]");
+   document.getElementById("ventanaNavbar").classList.add("xs:h-[82px]");
+  
+  document.getElementById("menuMobile").classList.remove("opacity-100");
+  document.getElementById("menuMobile").classList.remove("pointer-events-auto");
+  document.getElementById("menuMobile").classList.add("opacity-0");
+  document.getElementById("menuMobile").classList.add("pointer-events-none");
+  
+  
+ })
+
+ 
+</script>
