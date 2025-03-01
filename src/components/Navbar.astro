@@ -92,7 +92,7 @@ var opcionesMenu = [
 
 
 
-<header id="ventanaNavbar" class="fixed top-0 left-0 right-0 z-10 border-b border-white/10 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 w-full h-[105px] xs:h-[82px] transition-all duration-500">
+<header id="ventanaNavbar" class="fixed top-0 left-0 right-0 z-10 border-b border-white/10 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 w-full h-[105px] xs:h-[82px] sm:h-auto transition-all duration-500">
     <div id="menuCerrado" class="flex my-6 xs:my-4 sm:my-3 xl:my-3 3xl:my-7 mx-5 sm:mx-5 md:mx-6 lg:mx-12 xl:mx-16 justify-between sm:justify-between items-center opacity-100 transition-all">
 
       <div class="flex gap-4 sm:gap-5 lg:gap-9 items-center justify-center">
@@ -289,13 +289,13 @@ var opcionesMenu = [
 
   </div>
 
-  <nav id="menuMobile" class="absolute top-0 w-full flex flex-col px-6 gap-12 xs:gap-3 opacity-0 pointer-events-none transition-all duration-1000">
+  <nav id="menuMobile" class="absolute top-0 w-full flex flex-col sm:hidden px-6 gap-12 xs:gap-3 opacity-0 pointer-events-none transition-all duration-1000">
    <img src="/heroCIIEC.png" class="w-[29%] pt-16">
 
 
-   <svg id="botonCerrar" xmlns="http://www.w3.org/2000/svg"  class="absolute top-9 right-5 w-8 fill-current " viewBox="0 -960 960 960" ><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+   <svg id="botonCerrar" xmlns="http://www.w3.org/2000/svg"  class="absolute top-9 right-5 w-11 fill-current " viewBox="0 -960 960 960" ><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
 
-   <ul class="flex flex-col font-inter divide-y-[1px] divide-gray-50 gap-5">
+   <ul class="flex flex-col font-inter divide-y-[1px] divide-gray-50 gap-5 ">
 
     <li class="flex flex-col gap-5 pt-3">
       <a href="/" class="flex justify-between items-center font-bold">
@@ -307,7 +307,7 @@ var opcionesMenu = [
 
     {
      opcionesMenu.map( (opcion, numero) => (
-     <li class="flex flex-col gap-5 pt-3">
+     <li id="listaMenuMoblie" class="flex flex-col gap-5 pt-3">
 
 
      
@@ -320,7 +320,7 @@ var opcionesMenu = [
 
 
 
-     <ul id={"c"+numero} class="h-0 hidden flex-col pl-3 divide-y-[1px] text-[#ffffffcc] divide-[#ffffff4d] gap-3 transition-[#] duration-1000">
+     <ul id={"c"+numero} class="h-0 hidden flex-col pl-3 divide-y-[1px] text-[#ffffffcc] divide-[#ffffff4d] gap-3 transition-all duration-0 opacity-100 pointer-events-none ">
        {
         opcion?.subcategorias?.map( subcategoria => 
         (
@@ -353,27 +353,39 @@ var opcionesMenu = [
 
 <script>
  
- var categoriaActiva = 0;
- window.mostrarSubcategorias = function(numeroCategoria) {
+ var categoriaActiva = -1;
+ window.mostrarSubcategorias = function(categoriaSeleccionada) {
 
+  
+
+  //Se cierra el submenu que se encuentra abierto actualmente
+  if(categoriaActiva!=-1)
+  {
     document.getElementById("c"+categoriaActiva).classList.remove("flex");
-    document.getElementById("c"+categoriaActiva).classList.remove("h-auto");
+    document.getElementById("c"+categoriaActiva).classList.remove("h-full");
     document.getElementById("c"+categoriaActiva).classList.add("h-0");
     document.getElementById("c"+categoriaActiva).classList.add("hidden");
+    document.getElementById("c"+categoriaActiva).classList.add("pointer-events-none");
 
     document.getElementById("flecha"+categoriaActiva).classList.remove("rotate-90");
     document.getElementById("flecha"+categoriaActiva).classList.add("rotate-0");
-
-
-  document.getElementById("c"+numeroCategoria).classList.remove("hidden");
-  document.getElementById("c"+numeroCategoria).classList.remove("h-0");
-  document.getElementById("c"+numeroCategoria).classList.add("flex");
-  document.getElementById("c"+numeroCategoria).classList.add("h-auto");
-  document.getElementById("flecha"+numeroCategoria).classList.add("rotate-90");
-  document.getElementById("flecha"+numeroCategoria).classList.remove("rotate-0");
-  categoriaActiva = numeroCategoria;
+  }
+  if(categoriaActiva!=categoriaSeleccionada)
+  { //Se abre el submenu de la categoria seleccionada.
+   document.getElementById("c"+categoriaSeleccionada).classList.remove("hidden");
+   document.getElementById("c"+categoriaSeleccionada).classList.remove("pointer-events-none");
+   document.getElementById("c"+categoriaSeleccionada).classList.remove("h-0");
+   document.getElementById("c"+categoriaSeleccionada).classList.add("flex");
+   document.getElementById("c"+categoriaSeleccionada).classList.add("h-full");
+   document.getElementById("flecha"+categoriaSeleccionada).classList.add("rotate-90");
+   document.getElementById("flecha"+categoriaSeleccionada).classList.remove("rotate-0");
+   categoriaActiva = categoriaSeleccionada;
+  }
+  else
+   categoriaActiva = -1;
  }
 
+ //Se revisa si se ha abierto el menu de hamburguesa
  document.getElementById("botonNavbar").addEventListener("click", (event) => {
   document.getElementById("menuCerrado").classList.remove("opacity-100");
   document.getElementById("menuCerrado").classList.add("pointer-events-none");
@@ -391,6 +403,7 @@ var opcionesMenu = [
   
  })
 
+ //Se revisa si se ha cerrado el menu de hamburguesa
  document.getElementById("botonCerrar").addEventListener("click", (event) => {
    document.getElementById("menuCerrado").classList.remove("opacity-0");
    document.getElementById("menuCerrado").classList.remove("pointer-events-none");
