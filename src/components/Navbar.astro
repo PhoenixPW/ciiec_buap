@@ -93,17 +93,23 @@ var opcionesMenu = [
 
 
 <header id="ventanaNavbar" class="fixed top-0 left-0 right-0 z-10 border-b border-white/10 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 w-full h-[105px] xs:h-[82px] sm:h-auto transition-all duration-500">
-    <div id="menuCerrado" class="flex my-6 xs:my-4 sm:my-3 xl:my-3 3xl:my-7 mx-5 sm:mx-5 md:mx-6 lg:mx-12 xl:mx-16 justify-between sm:justify-between items-center opacity-100 transition-all">
+    <div id="menuCerrado" class="flex my-6 xs:my-4 sm:my-3 xl:my-3 3xl:my-7 ml-9 mr-6 sm:mx-5 md:mx-6 lg:mx-12 xl:mx-16 justify-between sm:justify-between items-center opacity-100 transition-all">
 
       <div class="flex gap-4 sm:gap-5 lg:gap-9 items-center justify-center">
-          <a href="https://www.buap.mx/">
+          <a href="https://www.buap.mx/" class="hidden sm:block">
            <img class="h-10 xs:h-8 sm:h-6 lg:h-9 xl:h-11 2xl:h-11 3xl:h-11" src="/buap_v2.png"/>
           </a>
+
+
           <a class=" text-teal-600" href="/">
            <span class="sr-only">Home</span>
           
            <img class="h-11 xs:h-9 sm:h-10 lg:h-12 xl:h-14 2xl:h-16 3xl:h-20" src="/home.png"/>
           </a>
+
+          <p class="sm:hidden text-2xl text-[#0C8CE9] font-bold">CIIEC</p>
+
+
       </div>
 
         <div class="flex items-center gap-4 justify-center">
