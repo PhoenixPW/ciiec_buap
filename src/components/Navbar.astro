@@ -33,7 +33,7 @@ var opcionesMenu = [
                       },
                       {
                        "nombre":"Salud digital y planetaria",
-                       "direccion":""
+                       "direccion":"ejes/salud-digital-y-planetaria"
                       },
                       {
                        "nombre":"Interculturalidad y diálogo de saberes",
@@ -189,7 +189,11 @@ var opcionesMenu = [
                 </li>
  
                 <li class='hover:bg-[#232933] px-3 py-2'>
-                 <a>Salud digital y planetaria</a>
+                  <a class="w-full" href="/ejes/salud-digital-y-planetaria">
+                   <p class="w-full">
+                    Salud digital y planetaria
+                   </p>
+                 </a>
                 </li>
  
                 <li class='hover:bg-[#232933] px-3 pb-2 pt-2'>
@@ -331,7 +335,6 @@ var opcionesMenu = [
         opcion?.subcategorias?.map( subcategoria => 
         (
          <li class="flex justify-between items-center pt-2">
-          
 
           <p class="xs:text-sm"> {subcategoria.nombre}</p>
 
