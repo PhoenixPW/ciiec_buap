@@ -16,13 +16,13 @@ var listaEjes = [
                   "nombre":"Fundamentos y tecnología cuántica",
                   "ruta":"/ejes/fundamentos",
                   "secciones":[{"nombre":"About us",
-                                "ruta":"#"}]
+                                "ruta":"/ejes/salud-digital-y-planetaria"}]
                  },
                  {
                   "nombre":"Interculturalidad y diálogo de saberes",
                   "ruta":"/ejes/interculturalidad",
                   "secciones":[{"nombre":"About us",
-                                "ruta":"#"}]
+                                "ruta":"/ejes/salud-digital-y-planetaria"}]
                  },
 
 
@@ -34,23 +34,27 @@ const rutaActual = Astro.url;
 ---
 
 
-<aside class="w-3/12 border-r-[1px] border-white/35 sticky top-24 h-[60dvh] ">
+<aside class="w-3/12 border-r-[1px] border-white/35 sticky top-24 h-[70vh] xl:h-[65dvh] ">
+ <h2 class=" pl-4 py-4 ml-11 3xl:ml-16 border-[1px] border-white/35 text-left sm:text-sm xl:text-base font-bold">Ejes</h2>
  <ul id="indiceEjes" class="flex flex-col pl-11 3xl:pl-16 ">
  {
   listaEjes.map( (eje,indice) => (
     <li class=" flex flex-col border-b-[1px] border-l-[1px] border-white/45 gap-0 cursor-pointer">
-     <article onclick={`mostrarSecciones(${indice})`}  class="flex py-4 px-4 h-full justify-between items-center sm:text-sm xl:text-base font-extrabold hover:text-gray-500/75 transition-all">
-      <p class={`w-3/4   ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"}`}>
+     <article onclick={`mostrarSecciones(${indice})`}  class="group flex py-4 px-8 h-full justify-between items-center sm:text-sm xl:text-base font-extrabold hover:text-gray-500/75 transition-all">
+      <p class={`w-3/4 ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"} group-hover:text-gray-500/75`}>
        {eje.nombre}
       </p>
-      <svg id="plus" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg id={"expand"+indice} class={` ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9] hidden"} group-hover:text-gray-500/75`} width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 7H7M7 7H2M7 7V2M7 7V12" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="round"/>
       </svg>
 
+      <svg id={"shrink"+indice} class={`${!rutaActual.pathname.includes(eje.ruta) && "hidden" } ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"} group-hover:text-gray-500/75`} width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 7H2N7 7H2M7 7V2M7 7V02" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="round"/>
+      </svg>
 
      </article>
      <ul id={"e"+indice} class:list={[
-      "flex flex-col pl-6 gap-3 pb-4",
+      "flex flex-col pl-12 gap-3 pb-4",
       {
        "hidden": !rutaActual.pathname.includes(eje.ruta) ,
       }
@@ -59,15 +63,21 @@ const rutaActual = Astro.url;
      {
       eje.secciones.map( seccion => (
         <li class:list={[
-          "pb-2 mr-4 sm:text-xs xl:text-sm font-medium border-b-2 border-white/30",
+          "pb-2 mr-8 sm:text-xs xl:text-sm font-medium border-b-2 border-white/30",
          {
-           "text-white": rutaActual.pathname.includes(seccion.ruta),
-           "text-[#ffffffcc]": !rutaActual.pathname.includes(seccion.ruta),
+           "text-white": rutaActual.pathname == seccion.ruta,
+           "text-[#ffffffcc]": rutaActual.pathname != seccion.ruta,
 
          }
         ]}>
-         <a href={seccion.ruta}>
-          <p>{seccion.nombre}</p>
+         <a href={seccion.ruta} 
+            class="group flex justify-between transition-all">
+
+          <p class="group-hover:text-gray-500/75 transition-all">{seccion.nombre}</p>
+          <svg xmlns="http://www.w3.org/2000/svg"  class="w-4 fill-current " viewBox="0 -960 960 960" ><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>  
+          
+
+
          </a>
         </li>
        )
@@ -98,7 +108,10 @@ var ejeActivo = [...listaSeccionesEjes].findIndex( eje => !eje.className.include
   //  document.getElementById("e"+ejeActivo).classList.remove("flex");
   //  document.getElementById("e"+ejeActivo).classList.remove("h-full");
   //  document.getElementById("e"+ejeActivo).classList.add("h-0");
+    document.getElementById("expand"+ejeActivo).classList.remove("hidden");
     document.getElementById("e"+ejeActivo).classList.add("hidden");
+    document.getElementById("shrink"+ejeActivo).classList.add("hidden");
+  //  document.getElementById("shrink"+ejeActivo).classList.remove("hidden");
   //  document.getElementById("e"+ejeActivo).classList.add("pointer-events-none");
 
    // document.getElementById("plus"+ejeActivo).classList.remove("rotate-90");
@@ -107,7 +120,10 @@ var ejeActivo = [...listaSeccionesEjes].findIndex( eje => !eje.className.include
   if(ejeActivo!=ejeSeleccionado)
   { //Se abre el submenu de la categoria seleccionada.
    document.getElementById("e"+ejeSeleccionado).classList.remove("hidden");
-  // document.getElementById("e"+ejeSeleccionado).classList.remove("pointer-events-none");
+   document.getElementById("shrink"+ejeSeleccionado).classList.remove("hidden");
+   document.getElementById("expand"+ejeSeleccionado).classList.add("hidden");
+   //document.getElementById("expand"+ejeActivo).classList.add("hidden");
+   // document.getElementById("e"+ejeSeleccionado).classList.remove("pointer-events-none");
   // document.getElementById("e"+ejeSeleccionado).classList.remove("h-0");
   // document.getElementById("e"+ejeSeleccionado).classList.add("flex");
   // document.getElementById("e"+ejeSeleccionado).classList.add("h-full");

@@ -2,17 +2,38 @@
 import Layout from '../layouts/Layout.astro';
 import Sidebar from '../components/Sidebar.astro';
 import ViewTransitions from 'astro/components/ViewTransitions.astro';
+
+
+
+const ejes = {
+ "salud-digital-y-planetaria": 
+ {"nombre":"Salud Planetaria y Digital",
+  "urlImagen":"/salud.png"},
+
+ "fundamentos-y-tecnologia-cuantica": 
+ {"nombre":"Fundamentos y tecnología cuántica",
+  "urlImagen":"/salud.png"},
+
+ "interculturalidad-y-dialogo-de-saberes": 
+ {"nombre":"Interculturalidad y diálogo de saberes",
+  "urlImagen":"/salud.png"}
+}
+
+const contenidoRuta = Astro.url.pathname.split("/");
+const ejeActivo = ejes[contenidoRuta[2]]
+//console.log(rutaActual);
+const nombreEje = ejeActivo.nombre;
+const rutaImagen = ejeActivo.urlImagen;
 ---
 
 <Layout title="Ejes">
  <ViewTransitions/>
- <img src="/salud.png" class="w-full"/>
- <h1
-    class="md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold font-inter pl-11 py-7 3xl:pl-16 3xl:py-12 border-y-[1px] border-white/35">
-  Salud Planetaria y Digital
-  
+ <img src={rutaImagen} class="w-full"/>
+ <h1 id="nombreEje"
+     class=" md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold font-inter pl-11 py-7 3xl:pl-16 3xl:py-12 border-y-[1px] border-white/35">
+  {nombreEje}
  </h1>
- <section class="relative flex font-inter">
+ <section id="contenedorEjes" class="relative flex font-inter">
   <Sidebar/>
   
   <slot/>
@@ -21,16 +42,18 @@ import ViewTransitions from 'astro/components/ViewTransitions.astro';
 
 <script is:inline>
   // Guardar la posición del scroll antes de la transición
-  document.addEventListener('astro:before-preparation', () => {
+/*  document.addEventListener('astro:before-preparation', () => {
     sessionStorage.setItem('scrollPos', window.scrollY);
   });
+*/
 
   // Restaurar la posición después de la transición
   document.addEventListener('astro:after-swap', () => {
-    const scrollPos = sessionStorage.getItem('scrollPos');
-    if (scrollPos) {
-      window.scrollTo(0, parseInt(1));
-      sessionStorage.removeItem('scrollPos');
+    const contenedor = document.getElementById("nombreEje");
+    const InicioContenedor = contenedor.offsetTop; //sessionStorage.getItem('scrollPos');
+    if (InicioContenedor) {
+      window.scrollTo(0, InicioContenedor);
+      //sessionStorage.removeItem('scrollPos');
     }
   });
 </script>
