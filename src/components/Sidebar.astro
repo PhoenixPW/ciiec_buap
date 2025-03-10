@@ -7,10 +7,10 @@ var listaEjes = [
                   "secciones":[{"nombre":"About us",
                                 "ruta":"/ejes/salud-digital-y-planetaria"},
                                {"nombre":"Investigacion",
-                               "ruta":"#"},
+                               "ruta":"/ejes/salud-digital-y-planetaria/investigacion"},
                               
                                {"nombre":"Oferta educativa",
-                               "ruta":"#"}],
+                               "ruta":"/ejes/salud-digital-y-planetaria/oferta-educativa"}],
                  },
                  {
                   "nombre":"Fundamentos y tecnología cuántica",
@@ -29,21 +29,28 @@ var listaEjes = [
 ]
 
 const rutaActual = Astro.url;
+
+//var numeroEje = listaEjes.findIndex(eje => eje.ruta==rutaActual.pathname);
 ---
 
 
 <aside class="w-3/12 border-r-[1px] border-white/35 sticky top-24 h-[60dvh] ">
- <ul class="flex flex-col pl-11 ">
+ <ul id="indiceEjes" class="flex flex-col pl-11 3xl:pl-16 ">
  {
-  listaEjes.map( eje => (
-    <li class="flex flex-col py-4 border-b-[1px] border-white/45 gap-4">
-     <article  class="font-extrabold">
-      <p class={`w-3/4  ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"}`}>
+  listaEjes.map( (eje,indice) => (
+    <li class=" flex flex-col border-b-[1px] border-l-[1px] border-white/45 gap-0 cursor-pointer">
+     <article onclick={`mostrarSecciones(${indice})`}  class="flex py-4 px-4 h-full justify-between items-center sm:text-sm xl:text-base font-extrabold hover:text-gray-500/75 transition-all">
+      <p class={`w-3/4   ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"}`}>
        {eje.nombre}
       </p>
+      <svg id="plus" width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 7H7M7 7H2M7 7V2M7 7V12" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="round"/>
+      </svg>
+
+
      </article>
-     <ul class:list={[
-      "flex flex-col gap-3",
+     <ul id={"e"+indice} class:list={[
+      "flex flex-col pl-6 gap-3 pb-4",
       {
        "hidden": !rutaActual.pathname.includes(eje.ruta) ,
       }
@@ -52,7 +59,7 @@ const rutaActual = Astro.url;
      {
       eje.secciones.map( seccion => (
         <li class:list={[
-          "text-sm font-medium",
+          "pb-2 mr-4 sm:text-xs xl:text-sm font-medium border-b-2 border-white/30",
          {
            "text-white": rutaActual.pathname.includes(seccion.ruta),
            "text-[#ffffffcc]": !rutaActual.pathname.includes(seccion.ruta),
@@ -74,3 +81,43 @@ const rutaActual = Astro.url;
 
  </ul>
 </aside>
+
+
+<script>
+
+const listaSeccionesEjes = document.getElementById("indiceEjes").getElementsByTagName("ul");
+
+var ejeActivo = [...listaSeccionesEjes].findIndex( eje => !eje.className.includes("hidden"));
+
+ window.mostrarSecciones = function(ejeSeleccionado) {
+
+
+  //Se cierra el submenu que se encuentra abierto actualmente
+  if(ejeActivo!=-1)
+  {
+  //  document.getElementById("e"+ejeActivo).classList.remove("flex");
+  //  document.getElementById("e"+ejeActivo).classList.remove("h-full");
+  //  document.getElementById("e"+ejeActivo).classList.add("h-0");
+    document.getElementById("e"+ejeActivo).classList.add("hidden");
+  //  document.getElementById("e"+ejeActivo).classList.add("pointer-events-none");
+
+   // document.getElementById("plus"+ejeActivo).classList.remove("rotate-90");
+   // document.getElementById("plus"+ejeActivo).classList.add("rotate-0");
+  }
+  if(ejeActivo!=ejeSeleccionado)
+  { //Se abre el submenu de la categoria seleccionada.
+   document.getElementById("e"+ejeSeleccionado).classList.remove("hidden");
+  // document.getElementById("e"+ejeSeleccionado).classList.remove("pointer-events-none");
+  // document.getElementById("e"+ejeSeleccionado).classList.remove("h-0");
+  // document.getElementById("e"+ejeSeleccionado).classList.add("flex");
+  // document.getElementById("e"+ejeSeleccionado).classList.add("h-full");
+  // document.getElementById("plus"+ejeSeleccionado).classList.add("rotate-90");
+  // document.getElementById("plus"+ejeSeleccionado).classList.remove("rotate-0");
+   ejeActivo = ejeSeleccionado;
+  }
+  else
+   ejeActivo = -1;
+ }
+
+
+</script>

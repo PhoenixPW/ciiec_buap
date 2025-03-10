@@ -1,13 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Sidebar from '../components/Sidebar.astro';
+import ViewTransitions from 'astro/components/ViewTransitions.astro';
 ---
 
 <Layout title="Ejes">
- 
+ <ViewTransitions/>
  <img src="/salud.png" class="w-full"/>
  <h1
-    class="2xl:text-4xl font-bold font-inter pl-11 py-5 border-y-[1px] border-white/35">
+    class="md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold font-inter pl-11 py-7 3xl:pl-16 3xl:py-12 border-y-[1px] border-white/35">
   Salud Planetaria y Digital
   
  </h1>
@@ -17,3 +18,19 @@ import Sidebar from '../components/Sidebar.astro';
   <slot/>
  </section>
 </Layout>
+
+<script is:inline>
+  // Guardar la posición del scroll antes de la transición
+  document.addEventListener('astro:before-preparation', () => {
+    sessionStorage.setItem('scrollPos', window.scrollY);
+  });
+
+  // Restaurar la posición después de la transición
+  document.addEventListener('astro:after-swap', () => {
+    const scrollPos = sessionStorage.getItem('scrollPos');
+    if (scrollPos) {
+      window.scrollTo(0, parseInt(1));
+      sessionStorage.removeItem('scrollPos');
+    }
+  });
+</script>
