@@ -6,7 +6,7 @@ import ViewTransitions from 'astro/components/ViewTransitions.astro';
 
 
 const ejes = {
- "salud-digital-y-planetaria": 
+ "salud-planetaria-y-digital": 
  {"nombre":"Salud Planetaria y Digital",
   "urlImagen":"/salud.png"},
 
@@ -28,32 +28,55 @@ const rutaImagen = ejeActivo.urlImagen;
 
 <Layout title="Ejes">
  <ViewTransitions/>
- <img src={rutaImagen} class="w-full"/>
- <h1 id="nombreEje"
+
+ <div class="pointer-events-none fixed inset-0">
+	<div class="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+	<div class="absolute right-0 top-0 h-[500px] w-[500px] bg-blue-500/10 blur-[100px]" />
+	<div class="absolute bottom-0 left-0 h-[500px] w-[500px] bg-purple-500/10 blur-[100px]" />
+ </div>
+
+ <section class="relative">
+  <img src={rutaImagen} class="w-full"/>
+  <h1 id="nombreEje"
      class=" md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold font-inter pl-11 py-7 3xl:pl-16 3xl:py-12 border-y-[1px] border-white/35">
-  {nombreEje}
- </h1>
- <section id="contenedorEjes" class="relative flex font-inter">
-  <Sidebar/>
+   {nombreEje}
+  </h1>
+  <section id="contenedorEjes" class="relative flex font-inter">
   
-  <slot/>
+   <Sidebar/>
+  
+   <slot/>
+  </section>
  </section>
 </Layout>
 
 <script is:inline>
-  // Guardar la posición del scroll antes de la transición
-/*  document.addEventListener('astro:before-preparation', () => {
-    sessionStorage.setItem('scrollPos', window.scrollY);
+  // Guardar el nombre de la ruta antes de la transición
+  document.addEventListener('astro:before-preparation', () => {
+    sessionStorage.setItem('rutaPrevia', window.location.pathname);
   });
-*/
 
-  // Restaurar la posición después de la transición
-  document.addEventListener('astro:after-swap', () => {
-    const contenedor = document.getElementById("nombreEje");
-    const InicioContenedor = contenedor.offsetTop; //sessionStorage.getItem('scrollPos');
-    if (InicioContenedor) {
+
+// Restaurar la posición después de la transición
+document.addEventListener('astro:after-swap', () => {
+  
+    const partesRutaActual = window.location.pathname.split("/");
+    const partesRutaPrevia = sessionStorage.getItem('rutaPrevia').split("/");
+    const ejeRutaActual = partesRutaActual[2];
+    const ejeRutaPrevia = partesRutaPrevia[2];
+
+    console.log("Ruta P:"+ejeRutaPrevia +"   Ruta A:"+ ejeRutaActual);
+    
+    //Se comprueba si el eje actual es el mismo que el de la pagina anterior.
+    if(ejeRutaActual==ejeRutaPrevia)
+    {
+     
+     const contenedor = document.getElementById("nombreEje");
+     const InicioContenedor = contenedor.offsetTop; //sessionStorage.getItem('scrollPos');
+     if (InicioContenedor) {
       window.scrollTo(0, InicioContenedor);
-      //sessionStorage.removeItem('scrollPos');
+      sessionStorage.removeItem('rutaPrevia');
+     }
     }
   });
 </script>
