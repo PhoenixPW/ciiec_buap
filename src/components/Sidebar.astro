@@ -34,13 +34,13 @@ const rutaActual = Astro.url;
 ---
 
 
-<aside class="w-3/12 border-r-[1px] border-white/35 sticky top-24 h-[70vh] xl:h-[65dvh] ">
- <h2 class=" pl-4 py-4 ml-11 3xl:ml-16 border-[1px] border-white/35 text-left sm:text-sm xl:text-base font-bold">Ejes</h2>
+<aside class="lg:w-3/12 border-r-[1px] border-white/35 sticky top-24 h-[70vh] xl:h-[65dvh] ">
+ <h2 class=" pl-4 py-4 ml-11 3xl:ml-16 border-[1px] border-white/35 text-left sm:text-sm xl:text-base font-extrabold">Ejes</h2>
  <ul id="indiceEjes" class="flex flex-col pl-11 3xl:pl-16 ">
  {
   listaEjes.map( (eje,indice) => (
     <li class=" flex flex-col border-b-[1px] border-l-[1px] border-white/45 gap-0 cursor-pointer">
-     <article onclick={`mostrarSecciones(${indice})`}  class="group flex py-4 px-8 h-full justify-between items-center sm:text-sm xl:text-base font-extrabold hover:text-gray-500/75 transition-all">
+     <article onclick={`mostrarSecciones(${indice})`}  class="group flex py-4 px-8 h-full justify-between items-center sm:text-sm xl:text-base font-semibold hover:text-gray-500/75 transition-all">
       <p class={`w-3/4 ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"} group-hover:text-gray-500/75`}>
        {eje.nombre}
       </p>
