@@ -5,24 +5,24 @@ var listaEjes = [
                   "nombre":"Salud Planetaria y Digital",
                   "ruta":"/ejes/salud-planetaria-y-digital",
                   "secciones":[{"nombre":"About us",
-                                "ruta":"/ejes/salud-planetaria-y-digital"},
+                                "ruta":"/ejes/salud-planetaria-y-digital/"},
                                {"nombre":"Investigacion",
-                               "ruta":"/ejes/salud-planetaria-y-digital/investigacion"},
+                               "ruta":"/ejes/salud-planetaria-y-digital/investigacion/"},
                               
                                {"nombre":"Oferta educativa",
-                               "ruta":"/ejes/salud-planetaria-y-digital/oferta-educativa"}],
+                               "ruta":"/ejes/salud-planetaria-y-digital/oferta-educativa/"}],
                  },
                  {
                   "nombre":"Fundamentos y tecnología cuántica",
                   "ruta":"/ejes/fundamentos",
                   "secciones":[{"nombre":"About us",
-                                "ruta":"/ejes/fundamentos-y-tecnologia-cuantica"}]
+                                "ruta":"/ejes/fundamentos-y-tecnologia-cuantica/"}]
                  },
                  {
                   "nombre":"Interculturalidad y diálogo de saberes",
                   "ruta":"/ejes/interculturalidad",
                   "secciones":[{"nombre":"About us",
-                                "ruta":"/ejes/interculturalidad-y-dialogo-de-saberes"}]
+                                "ruta":"/ejes/interculturalidad-y-dialogo-de-saberes/"}]
                  },
 
 
@@ -34,27 +34,27 @@ const rutaActual = Astro.url;
 ---
 
 
-<aside class="lg:w-3/12 border-r-[1px] border-white/35 sticky top-24 h-[70vh] xl:h-[65dvh] ">
- <h2 class=" pl-4 py-4 ml-11 3xl:ml-16 border-[1px] border-white/35 text-left sm:text-sm xl:text-base font-extrabold">Ejes</h2>
+<aside class=" sm:w-4/12 lg:w-3/12 border-r-[0px] border-white/35 sticky top-24 h-[70vh] xl:h-[65dvh] ">
+ <h2 class=" pl-0 sm:pb-2 sm:pt-6 3xl:pb-4 3xl:pt-8 ml-11 3xl:ml-16 border-[0px] border-white/35 text-left sm:text-sm xl:text-base font-extrabold">Ejes</h2>
  <ul id="indiceEjes" class="flex flex-col pl-11 3xl:pl-16 ">
  {
   listaEjes.map( (eje,indice) => (
-    <li class=" flex flex-col border-b-[1px] border-l-[1px] border-white/45 gap-0 cursor-pointer">
-     <article onclick={`mostrarSecciones(${indice})`}  class="group flex py-4 px-8 h-full justify-between items-center sm:text-sm xl:text-base font-semibold hover:text-gray-500/75 transition-all">
-      <p class={`w-3/4 ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"} group-hover:text-gray-500/75`}>
+    <li class=" flex flex-col border-b-[0px] border-l-[0px] border-white/45 gap-0 cursor-pointer">
+     <article onclick={`mostrarSecciones(${indice})`}  class="group flex py-4 px-4 h-full justify-between items-center sm:text-sm xl:text-base font-semibold hover:text-gray-500/75 transition-all">
+      <p class={`w-3/4 ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"} group-hover:text-gray-500/75 transition-all`}>
        {eje.nombre}
       </p>
-      <svg id={"expand"+indice} class={` ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9] hidden"} group-hover:text-gray-500/75`} width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg id={"expand"+indice} class={` ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9] hidden"} group-hover:text-gray-500/75 transition-all`} width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 7H7M7 7H2M7 7V2M7 7V12" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="round"/>
       </svg>
 
-      <svg id={"shrink"+indice} class={`${!rutaActual.pathname.includes(eje.ruta) && "hidden" } ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"} group-hover:text-gray-500/75`} width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg id={"shrink"+indice} class={`${!rutaActual.pathname.includes(eje.ruta) && "hidden" } ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"} group-hover:text-gray-500/75 transition-all`} width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 7H2N7 7H2M7 7V2M7 7V02" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="round"/>
       </svg>
 
      </article>
      <ul id={"e"+indice} class:list={[
-      "flex flex-col pl-12 gap-3 pb-4",
+      "flex flex-col pl-9 gap-3 pb-4",
       {
        "hidden": !rutaActual.pathname.includes(eje.ruta) ,
       }
@@ -63,10 +63,10 @@ const rutaActual = Astro.url;
      {
       eje.secciones.map( seccion => (
         <li class:list={[
-          "pb-2 mr-8 sm:text-xs xl:text-sm font-medium border-b-2 border-white/30",
+          "pb-2 mr-4 sm:text-xs xl:text-sm font-medium border-b-[0px] border-white/30",
          {
-           "text-white": rutaActual.pathname == seccion.ruta,
-           "text-[#ffffffcc]": rutaActual.pathname != seccion.ruta,
+           "text-blue-500": rutaActual.pathname==seccion.ruta,
+           "text-[#ffffffcc]": rutaActual.pathname!=seccion.ruta,
 
          }
         ]}>
@@ -74,7 +74,7 @@ const rutaActual = Astro.url;
             class="group flex justify-between transition-all">
 
           <p class="group-hover:text-gray-500/75 transition-all">{seccion.nombre}</p>
-          <svg xmlns="http://www.w3.org/2000/svg"  class="w-4 fill-current " viewBox="0 -960 960 960" ><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>  
+          <svg xmlns="http://www.w3.org/2000/svg"  class="w-4 fill-current group-hover:text-gray-500/75 transition-all" viewBox="0 -960 960 960" ><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>  
           
 
 

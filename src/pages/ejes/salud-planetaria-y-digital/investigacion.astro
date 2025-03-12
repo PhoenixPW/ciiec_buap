@@ -23,7 +23,7 @@ const listaTemas = [
 ---
 
 <EjeLayout>
- <section class="lg:w-9/12 flex flex-col px-11 py-12 3xl:py-20 gap-16 3xl:gap-20 border-l-[1px] border-white/35">
+ <section class="sm:w-8/12 lg:w-9/12 flex flex-col px-11 py-12 3xl:py-20 gap-16 3xl:gap-20 border-l-[0px] border-white/35">
 
   <article class="flex flex-col gap-6 3xl:gap-10">
    <h2 class="md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold">
@@ -32,7 +32,7 @@ const listaTemas = [
   
   
   </h2>
-   <p class="sm:w-11/12 lg:w-3/4 text-justify sm:text-sm xl:text-base 2xl:text-lg 3xl:text-xl leading-snug">
+   <p class="sm:w-full lg:w-3/4 text-justify sm:text-sm xl:text-base 2xl:text-lg 3xl:text-xl leading-snug">
     
     En el CIIEC desarrollamos investigación que integre el uso de ciencia de datos, así como innovación tecnológica que permita el estudio de la interación entre la salud salud humana y la salud planetaria.
 
@@ -42,7 +42,7 @@ const listaTemas = [
 
   {
    listaTemas.map( tema => (
-    <article class="lg:w-3/4 flex sm:p-6 xl:p-8 3xl:p-10 sm:gap-7 xl:gap-9 3xl:gap-12 border-[1px] border-[#0C8CE9] rounded-2xl">
+    <article class=" lg:w-3/4 flex sm:p-6 xl:p-8 3xl:p-10 sm:gap-7 xl:gap-9 3xl:gap-12 border-[1px] border-[#0C8CE9] rounded-2xl">
      <img class="aspect-square md:w-5/12 lg:w-5/12 xl:w-5/12 3xl:w-4/12 rounded" src={tema.imagen}/>
      <div class=" flex flex-col justify-center sm:gap-5 lg:gap-4 xl:gap-5 3xl:gap-8">
       <h3 class="xl:w-9/12 3xl:w-7/12 sm:text-base xl:text-lg  2xl:text-xl 3xl:text-2xl font-extrabold">{tema.nombre}</h3>
