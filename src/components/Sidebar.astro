@@ -1,40 +1,13 @@
 ---
 
-var listaEjes = [
-                 {
-                  "nombre":"Salud Planetaria y Digital",
-                  "ruta":"/ejes/salud-planetaria-y-digital",
-                  "secciones":[{"nombre":"About us",
-                                "ruta":"/ejes/salud-planetaria-y-digital/"},
-                               {"nombre":"Investigacion",
-                               "ruta":"/ejes/salud-planetaria-y-digital/investigacion/"},
-                              
-                               {"nombre":"Oferta educativa",
-                               "ruta":"/ejes/salud-planetaria-y-digital/oferta-educativa/"}],
-                 },
-                 {
-                  "nombre":"Fundamentos y tecnología cuántica",
-                  "ruta":"/ejes/fundamentos",
-                  "secciones":[{"nombre":"About us",
-                                "ruta":"/ejes/fundamentos-y-tecnologia-cuantica/"}]
-                 },
-                 {
-                  "nombre":"Interculturalidad y diálogo de saberes",
-                  "ruta":"/ejes/interculturalidad",
-                  "secciones":[{"nombre":"About us",
-                                "ruta":"/ejes/interculturalidad-y-dialogo-de-saberes/"}]
-                 },
-
-
-]
+//var numeroEje = listaEjes.findIndex(eje => eje.ruta==rutaActual.pathname);
 
 const rutaActual = Astro.url;
-
-//var numeroEje = listaEjes.findIndex(eje => eje.ruta==rutaActual.pathname);
+const {listaEjes} = Astro.props;
 ---
 
 
-<aside class=" sm:w-4/12 lg:w-3/12 border-r-[0px] border-white/35 sticky top-24 h-[70vh] xl:h-[65dvh] ">
+<aside class=" sm:w-4/12 lg:w-3/12 border-r-[0px] border-white/35 sticky top-16 xl:top-24 h-[70vh] xl:h-[65dvh] ">
  <h2 class=" pl-0 sm:pb-2 sm:pt-6 3xl:pb-4 3xl:pt-8 ml-11 3xl:ml-16 border-[0px] border-white/35 text-left sm:text-sm xl:text-base font-extrabold">Ejes</h2>
  <ul id="indiceEjes" class="flex flex-col pl-11 pr-7 3xl:pl-16 ">
  {

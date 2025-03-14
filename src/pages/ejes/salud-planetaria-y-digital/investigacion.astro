@@ -42,11 +42,11 @@ const listaTemas = [
 
   {
    listaTemas.map( tema => (
-    <article class=" lg:w-3/4 flex sm:p-6 xl:p-8 3xl:p-10 sm:gap-7 xl:gap-9 3xl:gap-12 border-[1px] border-[#0C8CE9] rounded-2xl">
+    <article class="bg-background lg:w-3/4 flex sm:p-6 xl:p-8 3xl:p-10 sm:gap-7 xl:gap-9 3xl:gap-12 border-[1px] border-[#0C8CE9] rounded-2xl">
      <img class="aspect-square md:w-5/12 lg:w-5/12 xl:w-5/12 3xl:w-4/12 rounded" src={tema.imagen}/>
      <div class=" flex flex-col justify-center sm:gap-5 lg:gap-4 xl:gap-5 3xl:gap-8">
       <h3 class="xl:w-9/12 3xl:w-7/12 sm:text-base xl:text-lg  2xl:text-xl 3xl:text-2xl font-extrabold">{tema.nombre}</h3>
-      <p class="xl:w-[95%] 2xl:w-[90%] 3xl:w-9/12 sm:text-xs xl:text-sm 2xl:text-base">{tema.descripcion}</p>
+      <p class="xl:w-[95%] 2xl:w-[90%] 3xl:w-9/12 sm:text-xs xl:text-sm 2xl:text-base text-muted-foreground">{tema.descripcion}</p>
      </div>
     </article>
     )

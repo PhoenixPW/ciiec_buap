@@ -2,28 +2,87 @@
 import Layout from '../layouts/Layout.astro';
 import Sidebar from '../components/Sidebar.astro';
 import ViewTransitions from 'astro/components/ViewTransitions.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 
+
+
+const obtenerElementosRutaNavegacion = (rutaActual, partesRutaActual) => {
+ 
+ let listaPaginasRutaNavegacion = [];
+
+ let nombreEjeActivo = ejes[partesRutaActual[2]].nombre;
+ let rutaEjeActivo = ejes[partesRutaActual[2]].ruta;
+
+ listaPaginasRutaNavegacion.push({
+  "nombrePagina": nombreEjeActivo,
+  "url": rutaEjeActivo
+ })
+
+ let paginaActiva = ejes[partesRutaActual[2]].secciones.find( seccion => seccion.ruta == rutaActual);
+ listaPaginasRutaNavegacion.push({
+  "nombrePagina": paginaActiva.nombre,
+  "url": paginaActiva.ruta
+  
+ })
+ return listaPaginasRutaNavegacion;
+}
 
 
 const ejes = {
- "salud-planetaria-y-digital": 
- {"nombre":"Salud Planetaria y Digital",
-  "urlImagen":"/salud.png"},
+ "salud-planetaria-y-digital": {
+  "nombre":"Salud Planetaria y Digital",
+  "urlImagen":"/salud.png",
+  "ruta":"/ejes/salud-planetaria-y-digital/",
+  "secciones":[
+               {
+                "nombre":"About us",
+                "ruta":"/ejes/salud-planetaria-y-digital/"
+               },
+               {
+                "nombre":"Investigacion",
+                "ruta":"/ejes/salud-planetaria-y-digital/investigacion/"
+               },               
+               {
+                "nombre":"Oferta educativa",
+                "ruta":"/ejes/salud-planetaria-y-digital/oferta-educativa/"
+               }],
+ },
 
  "fundamentos-y-tecnologia-cuantica": 
- {"nombre":"Fundamentos y tecnología cuántica",
-  "urlImagen":"/salud.png"},
+ {
+  "nombre":"Fundamentos y tecnología cuántica",
+  "urlImagen":"/salud.png",
+  "ruta":"/ejes/fundamentos",
+  "secciones":[
+               {
+                "nombre":"About us",
+                "ruta":"/ejes/fundamentos-y-tecnologia-cuantica/"
+               }]
+ },
 
  "interculturalidad-y-dialogo-de-saberes": 
- {"nombre":"Interculturalidad y diálogo de saberes",
-  "urlImagen":"/salud.png"}
+ {
+  "nombre":"Interculturalidad y diálogo de saberes",
+  "urlImagen":"/salud.png",
+  "ruta":"/ejes/interculturalidad",
+  "secciones":[
+               {
+                "nombre":"About us",
+                "ruta":"/ejes/interculturalidad-y-dialogo-de-saberes/"
+               }]
+ },
 }
 
-const contenidoRuta = Astro.url.pathname.split("/");
+
+const rutaActual = Astro.url.pathname;
+const contenidoRuta = rutaActual.split("/");
 const ejeActivo = ejes[contenidoRuta[2]]
 //console.log(rutaActual);
 const nombreEje = ejeActivo.nombre;
 const rutaImagen = ejeActivo.urlImagen;
+
+const listaPaginasRutaNavegacion = obtenerElementosRutaNavegacion(rutaActual, contenidoRuta);
+const ejesSidebar = Object.values(ejes);
 ---
 
 <Layout title="Ejes">
@@ -38,16 +97,21 @@ const rutaImagen = ejeActivo.urlImagen;
  <section class="relative">
   <img src={rutaImagen} class="w-full"/>
   <h1 id="nombreEje"
-     class=" md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold font-inter pl-11 py-7 3xl:pl-16 3xl:py-12 border-y-[1px] border-white/35">
+     class=" md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold font-inter pl-11 py-7 3xl:pl-16 3xl:py-12 border-y">
    {nombreEje}
   </h1>
   <section id="contenedorEjes" class="relative flex flex-col font-inter">
+
+   <Breadcrumbs listaPaginas={listaPaginasRutaNavegacion}/>
+
    <div class="relative flex">
-    <div class="absolute h-full sm:w-4/12 lg:w-3/12 shadow-[5px_0_7px_-3px_rgba(255,255,255,0.35)]"></div>
-    <Sidebar/>
-  
+    <div class="absolute h-full sm:w-4/12 lg:w-3/12 shadow-[5px_2px_5px_-3px_rgba(255,255,255,0.35)]">
+    </div>
+    <Sidebar listaEjes={ejesSidebar}/>
     <slot/>
    </div>
+
+   
   </section>
  </section>
 </Layout>
