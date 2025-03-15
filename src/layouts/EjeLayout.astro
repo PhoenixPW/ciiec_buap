@@ -30,7 +30,7 @@ const obtenerElementosRutaNavegacion = (rutaActual, partesRutaActual) => {
 
 const ejes = {
  "salud-planetaria-y-digital": {
-  "nombre":"Salud Planetaria y Digitasl",
+  "nombre":"Salud Planetaria y Digital",
   "urlImagen":"/salud.png",
   "ruta":"/ejes/salud-planetaria-y-digital/",
   "secciones":[
@@ -51,7 +51,7 @@ const ejes = {
  "fundamentos-y-tecnologia-cuantica": 
  {
   "nombre":"Fundamentos y tecnología cuántica",
-  "urlImagen":"/salud.png",
+  "urlImagen":"/cuantico.png",
   "ruta":"/ejes/fundamentos-y-tecnologia-cuantica/",
   "secciones":[
                {
@@ -63,7 +63,7 @@ const ejes = {
  "interculturalidad-y-dialogo-de-saberes": 
  {
   "nombre":"Interculturalidad y diálogo de saberes",
-  "urlImagen":"/salud.png",
+  "urlImagen":"/interculturalidad.png",
   "ruta":"/ejes/interculturalidad-y-dialogo-de-saberes/",
   "secciones":[
                {
@@ -95,7 +95,7 @@ const ejesSidebar = Object.values(ejes);
  </div>
 
  <section class="relative">
-  <img src={rutaImagen} class="w-full"/>
+  <img src={rutaImagen} class="lg:h-[56vh] w-full lg:object-cover">
   <h1 id="nombreEje"
      class=" md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold font-inter pl-11 py-7 3xl:pl-16 3xl:py-12 border-y">
    {nombreEje}
