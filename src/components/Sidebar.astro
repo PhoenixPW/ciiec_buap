@@ -7,16 +7,16 @@ const {listaEjes} = Astro.props;
 ---
 
 
-<aside class=" sm:w-4/12 lg:w-3/12 border-r-[0px] border-white/35 sticky top-16 xl:top-24 h-[70vh] xl:h-[65dvh] ">
+<aside class="min-h-[93dvh] sm:w-4/12 xl:w-3/12 border-r-[0px] border-white/35 sticky smh:relative top-16 smh:top-0 xl:top-24 h-[71dvh]  xl:h-[65dvh]  ">
  <h2 class=" pl-0 sm:pb-2 sm:pt-6 3xl:pb-4 3xl:pt-8 ml-11 3xl:ml-16 border-[0px] border-white/35 text-left sm:text-sm xl:text-base font-extrabold">Ejes</h2>
  <ul id="indiceEjes" class="flex flex-col pl-11 pr-7 3xl:pl-16 ">
  {
   listaEjes.map( (eje,indice) => (
     <li class=" flex flex-col border-b-[0px] border-l-[0px] border-white/45 gap-0 cursor-pointer">
      <article onclick={`mostrarSecciones(${indice})`}  class="group flex py-4 px-4 h-full justify-between items-center sm:text-sm xl:text-base font-semibold hover:text-gray-500/75 transition-all">
-      <p class={`w-3/4 ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"} group-hover:text-gray-500/75 transition-all`}>
+      <a href={eje.ruta} class={`w-3/4 ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"} group-hover:text-gray-500/75 transition-all`}>
        {eje.nombre}
-      </p>
+      </a>
       <svg id={"expand"+indice} class={` ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9] hidden"} group-hover:text-gray-500/75 transition-all`} width="15" height="15" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 7H7M7 7H2M7 7V2M7 7V12" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="round"/>
       </svg>

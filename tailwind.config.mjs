@@ -5,6 +5,7 @@ export default {
 		extend: {
 			screens:{
 				'xs': { 'raw': '(max-width:550px) and (max-height:750px)' },
+				'smh': { 'raw': '(min-width:550px) and (max-height:470px)' },				
 				'3xl': '1920px'
 			  },
 			  fontFamily: {
