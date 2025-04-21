@@ -29,15 +29,15 @@ var opcionesMenu = [
                      "subcategorias": [
                       {
                        "nombre":"Fundamentos y tecnología cuántica",
-                       "direccion":""
+                       "direccion":"/ejes/fundamentos-y-tecnologia-cuantica/"
                       },
                       {
                        "nombre":"Salud digital y planetaria",
-                       "direccion":"ejes/salud-digital-y-planetaria/"
+                       "direccion":"/ejes/salud-digital-y-planetaria/"
                       },
                       {
                        "nombre":"Interculturalidad y diálogo de saberes",
-                       "direccion":""
+                       "direccion":"/ejes/interculturalidad-y-dialogo-de-saberes/"
                       },
                      ]
                     },
@@ -352,7 +352,7 @@ var opcionesMenu = [
         (
          <li class="flex justify-between items-center pt-2">
 
-          <p class="xs:text-sm"> {subcategoria.nombre}</p>
+          <a class="xs:text-sm" href={subcategoria.direccion}> {subcategoria.nombre}</a>
 
           <svg xmlns="http://www.w3.org/2000/svg"  class="w-4 fill-current " viewBox="0 -960 960 960" ><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>  
 
