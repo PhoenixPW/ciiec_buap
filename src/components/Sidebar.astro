@@ -7,7 +7,7 @@ const {listaEjes} = Astro.props;
 ---
 
 
-<aside class="min-h-[93dvh] sm:w-4/12 xl:w-3/12 border-r-[0px] border-white/35 sticky smh:relative top-16 smh:top-0 xl:top-24 h-[71dvh]  xl:h-[65dvh]  ">
+<aside class="min-h-[93dvh] sm:w-4/12 xl:w-3/12 border-r-[0px] border-white/35 sm:sticky smh:relative top-16 smh:top-0 xl:top-24 h-[71dvh]  xl:h-[65dvh]  ">
  <h2 class=" pl-0 sm:pb-2 sm:pt-6 3xl:pb-4 3xl:pt-8 ml-11 3xl:ml-16 border-[0px] border-white/35 text-left sm:text-sm xl:text-base font-extrabold">Ejes</h2>
  <ul id="indiceEjes" class="flex flex-col pl-11 pr-7 3xl:pl-16 ">
  {
@@ -78,30 +78,15 @@ var ejeActivo = [...listaSeccionesEjes].findIndex( eje => !eje.className.include
   //Se cierra el submenu que se encuentra abierto actualmente
   if(ejeActivo!=-1)
   {
-  //  document.getElementById("e"+ejeActivo).classList.remove("flex");
-  //  document.getElementById("e"+ejeActivo).classList.remove("h-full");
-  //  document.getElementById("e"+ejeActivo).classList.add("h-0");
     document.getElementById("expand"+ejeActivo).classList.remove("hidden");
     document.getElementById("e"+ejeActivo).classList.add("hidden");
     document.getElementById("shrink"+ejeActivo).classList.add("hidden");
-  //  document.getElementById("shrink"+ejeActivo).classList.remove("hidden");
-  //  document.getElementById("e"+ejeActivo).classList.add("pointer-events-none");
-
-   // document.getElementById("plus"+ejeActivo).classList.remove("rotate-90");
-   // document.getElementById("plus"+ejeActivo).classList.add("rotate-0");
   }
   if(ejeActivo!=ejeSeleccionado)
   { //Se abre el submenu de la categoria seleccionada.
    document.getElementById("e"+ejeSeleccionado).classList.remove("hidden");
    document.getElementById("shrink"+ejeSeleccionado).classList.remove("hidden");
    document.getElementById("expand"+ejeSeleccionado).classList.add("hidden");
-   //document.getElementById("expand"+ejeActivo).classList.add("hidden");
-   // document.getElementById("e"+ejeSeleccionado).classList.remove("pointer-events-none");
-  // document.getElementById("e"+ejeSeleccionado).classList.remove("h-0");
-  // document.getElementById("e"+ejeSeleccionado).classList.add("flex");
-  // document.getElementById("e"+ejeSeleccionado).classList.add("h-full");
-  // document.getElementById("plus"+ejeSeleccionado).classList.add("rotate-90");
-  // document.getElementById("plus"+ejeSeleccionado).classList.remove("rotate-0");
    ejeActivo = ejeSeleccionado;
   }
   else

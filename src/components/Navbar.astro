@@ -92,7 +92,7 @@ var opcionesMenu = [
 
 
 
-<header id="ventanaNavbar" class="fixed top-0 left-0 right-0 z-10 border-b border-white/10 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 w-full h-[105px] xs:h-[82px] sm:h-auto transition-all duration-500">
+<header id="ventanaNavbar" class="fixed top-0 left-0 right-0 z-30 border-b border-white/10 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 w-full h-[105px] xs:h-[82px] sm:h-auto transition-all duration-500">
     <div id="menuCerrado" class="flex my-6 xs:my-4 sm:my-3 xl:my-3 3xl:my-7 ml-9 mr-6 sm:mx-5 md:mx-6 lg:mx-12 xl:mx-16 justify-between sm:justify-between items-center opacity-100 transition-all">
 
       <div class="flex gap-4 sm:gap-5 lg:gap-9 items-center justify-center">
@@ -115,7 +115,8 @@ var opcionesMenu = [
         <div class="flex items-center gap-4 justify-center">
 
           <div class="block sm:hidden">
-            <button id="botonNavbar" class="rounded bg-transparent p-2 text-white transition hover:text-gray-600/75">
+            <button id="botonNavbar"
+                    onclick={'abrirMenu()'} class="rounded bg-transparent p-2 text-white transition hover:text-gray-600/75">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="size-10 xs:size-8"
@@ -318,7 +319,7 @@ var opcionesMenu = [
    <img src="/heroCIIEC.png" class="w-[29%] pt-16">
 
 
-   <svg id="botonCerrar" xmlns="http://www.w3.org/2000/svg"  class="absolute top-9 right-5 w-11 fill-current " viewBox="0 -960 960 960" ><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+   <svg id="botonCerrar" onclick={'cerrarMenu()'} xmlns="http://www.w3.org/2000/svg"  class="absolute top-9 right-5 w-11 fill-current " viewBox="0 -960 960 960" ><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
 
    <ul class="flex flex-col font-inter divide-y-[1px] divide-gray-50 gap-5 ">
 
@@ -409,8 +410,9 @@ var opcionesMenu = [
    categoriaActiva = -1;
  }
 
- //Se revisa si se ha abierto el menu de hamburguesa
- document.getElementById("botonNavbar").addEventListener("click", (event) => {
+ //Funcion que permite abrir el menu de hamburguesa
+
+ window.abrirMenu = function(event) {
   document.getElementById("menuCerrado").classList.remove("opacity-100");
   document.getElementById("menuCerrado").classList.add("pointer-events-none");
   document.getElementById("menuCerrado").classList.add("opacity-0");
@@ -425,10 +427,10 @@ var opcionesMenu = [
   document.getElementById("menuMobile").classList.add("pointer-events-auto");
   
   
- })
+ }
 
- //Se revisa si se ha cerrado el menu de hamburguesa
- document.getElementById("botonCerrar").addEventListener("click", (event) => {
+ //Funcion que permite cerrar el menu de hamburguesa
+ window.cerrarMenu = function() {
    document.getElementById("menuCerrado").classList.remove("opacity-0");
    document.getElementById("menuCerrado").classList.remove("pointer-events-none");
    document.getElementById("menuCerrado").classList.add("opacity-100");
@@ -442,7 +444,7 @@ var opcionesMenu = [
   document.getElementById("menuMobile").classList.add("pointer-events-none");
   
   
- })
+}
 
  
 </script>
