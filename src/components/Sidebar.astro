@@ -7,13 +7,13 @@ const {listaEjes} = Astro.props;
 ---
 
 
-<aside class="min-h-[93dvh] sm:w-4/12 xl:w-3/12 border-r-[0px] border-white/35 sm:sticky smh:relative top-16 smh:top-0 xl:top-24 h-[71dvh]  xl:h-[65dvh]  ">
- <h2 class=" pl-0 sm:pb-2 sm:pt-6 3xl:pb-4 3xl:pt-8 ml-11 3xl:ml-16 border-[0px] border-white/35 text-left sm:text-sm xl:text-base font-extrabold">Ejes</h2>
- <ul id="indiceEjes" class="flex flex-col pl-11 pr-7 3xl:pl-16 ">
+<aside class="sm:min-h-[93dvh] sm:w-4/12 xl:w-3/12 border-r-[0px] border-white/35 sm:sticky smh:relative top-16 smh:top-0 xl:top-24 sm:h-[71dvh]  xl:h-[65dvh]  ">
+ <h2 class="hidden sm:block pl-0 sm:pb-2 sm:pt-6 3xl:pb-4 3xl:pt-8 sm:ml-11 3xl:ml-16 border-[0px] border-white/35 text-left sm:text-sm xl:text-base font-extrabold">Ejes</h2>
+ <ul id="indiceEjes" class="flex flex-col  sm:pl-11 sm:pr-7 3xl:pl-16 ">
  {
   listaEjes.map( (eje,indice) => (
     <li class=" flex flex-col border-b-[0px] border-l-[0px] border-white/45 gap-0 cursor-pointer">
-     <article onclick={`mostrarSecciones(${indice})`}  class="group flex py-4 px-4 h-full justify-between items-center sm:text-sm xl:text-base font-semibold hover:text-gray-500/75 transition-all">
+     <article onclick={`mostrarSecciones(${indice})`}  class="group flex py-4 px-6 sm:px-4 h-full justify-between items-center text-lg sm:text-sm xl:text-base font-semibold hover:text-gray-500/75 transition-all">
       <a href={eje.ruta} class={`w-3/4 ${rutaActual.pathname.includes(eje.ruta) && "text-[#0C8CE9]"} group-hover:text-gray-500/75 transition-all`}>
        {eje.nombre}
       </a>
@@ -36,7 +36,7 @@ const {listaEjes} = Astro.props;
      {
       eje.secciones.map( seccion => (
         <li class:list={[
-          "pb-2 mr-4 sm:text-xs xl:text-sm font-medium border-b-[0px] border-white/30",
+          "pb-2 mr-6 sm:mr-4 text-sm sm:text-xs xl:text-sm font-medium border-b-[0px] border-white/30",
          {
            "text-blue-500": rutaActual.pathname==seccion.ruta,
            "text-[#ffffffcc]": rutaActual.pathname!=seccion.ruta,

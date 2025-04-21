@@ -3,12 +3,12 @@ const {listaPaginas} = Astro.props
 const rutaActual = Astro.url.pathname;
 ---
 
-<article class="flex pl-11 py-4 3xl:pl-16 gap-1">
+<article class="flex pl-4 sm:pl-11 py-4 3xl:pl-16 gap-1">
     {
     
      listaPaginas.map( pagina => 
       (
-       <div class=" flex items-center gap-1 sm:text-sm xl:text-base hover:text-gray-500/75 transition-all">
+       <div class=" flex items-center gap-1 text-sm xl:text-base hover:text-gray-500/75 transition-all">
         <svg class="w-6" viewBox="0 0 24.00 24.00" xmlns="http://www.w3.org/2000/svg" fill="#0C8CE9" stroke="#0C8CE9" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path fill="none" d="M0 0h24v24H0z"></path> <path d="M16 12l-6 6V6z"></path> </g> </g></svg>
         <a href={pagina.url}>{pagina.nombrePagina}</a>
        </div>
