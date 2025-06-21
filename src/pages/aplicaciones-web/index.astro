@@ -1,0 +1,118 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Noticias from '../../components/Noticias.astro';
+import NoticiasMobile from '../../components/NoticiasMobile.astro';
+
+const experimentos = [
+	{
+	 nombre:"Material de Apoyo para Estudiar Inteligencia Artificial, Aprendizaje de Máquina y Aprendizaje Profundo",
+	 url:""
+	},
+	{
+	 nombre:"Mathematics with SageMath",
+	 url:""
+	},
+	{
+	 nombre:"Muon Decay Simulation",
+	 url:""
+	},
+
+]
+
+const propuestas = [
+	{
+	  nombre:"1° Version (Aplicaciones con Scroll)",
+	  descripcion: "En esta propuesta, las aplicaciones se integran completamente con la pagina, donde la navegacion sea de manera normal con scroll.",
+	  complejidad:"Dado a que en esta version se deben transformar gran parte de los elementos a un formato diferente a HTML, puede ser un poco mas laborioso en terminos de implementacion.",
+	  consideraciones:"Analizando las aplicaciones, se puede mencionar que hay casos los cuales debido a su complejidad, seria dificil pasarlos al 100% en este formato.",
+	},
+	{ 
+	  nombre:"2° Version (Aplicaciones en un cuadro)",
+	  descripcion: "En esta otra propuesta, las aplicaciones se envuelven en un cuadro dentro del cual el visitante debe hacer scroll para visualizar el contenido de la aplicacion.",
+	  complejidad:"Entre todas las versiones, esta es la manera mas rapida y segura de migrar las apliciones existentes sin mayor complejidad, siendo lo mas tardado pasarlos al diseño actual.",
+	  consideraciones: ""
+	},
+	{ 
+	  nombre:"3° Version (Aplicaciones con fondo, orientado mas al diseño)",
+	  descripcion:"Por ultimo, en esta alternativa se hace enfasis en el diseño que se le aplicara a las aplicaciones, colocandoles un degradado.",
+	  complejidad:"",
+	  consideraciones:""
+	}
+]
+---
+
+
+<Layout title="CIIEC-BUAP">
+
+		<div class="pointer-events-none fixed inset-0">
+			<div class="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+			<div class="absolute right-0 top-0 h-[500px] w-[500px] bg-blue-500/10 blur-[100px]" />
+			<div class="absolute bottom-0 left-0 h-[500px] w-[500px] bg-purple-500/10 blur-[100px]" />
+		  </div>
+	
+	<section
+	 class="w-full relative bg-cover bg-center bg-no-repeat"
+    >
+	
+	<div class="relative max-w-full flex flex-col min-h-screen sm:h-screen gap-8 ">
+	
+  
+	<section class="pt-32 xs:pt-24 sm:pt-0 sm:mx-5 md:mx-6 lg:mx-12 xl:mx-16 w-full sm:w-auto sm:h-full flex items-center justify-center text-white">
+	 <div class="flex flex-col-reverse sm:flex-row items-center gap-7 sm:gap-7 md:gap-10 lg:gap-11 xl:gap-6">
+  
+	  <div class=" flex flex-col gap-9 sm:gap-6 md:gap-7 lg:gap-9 xl:gap-5 mx-8 sm:mx-0">
+	   <h1 class="text-4xl xs:text-3xl sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl font-inter font-bold leading-snug lg:leading-snug xl:leading-tight 2xl:leading-tight 3xl:leading-normal">
+	 	 Aplicaciones Web
+	   </h1>
+	   <p class=" text-lg xs:text-base sm:text-xs md:text-xs lg:text-xs xl:text-sm 2xl:text-base 3xl:text-xl sm:text-justify font-inter sm:tracking-wide xl:w-9/12 text-muted-foreground">
+         El personal del CIIEC ha desarrollado los siguientes proyectos de software tanto educativo como de investigación para diferentes áreas.
+
+
+	   </p>
+	  </div>
+  
+	  <img src="heroCIIEC.png" class="hidden sm:block rounded-full w-56 xs:w-48 sm:w-44 md:w-52 lg:w-60 xl:w-96 xl:mr-4 2xl:mr-12"/>
+  
+	 </div>
+  
+	</section>
+  
+	</div>  
+  
+	</section>
+  
+	<section class="z-0 min-h-screen flex flex-col justify-center font-inter sm:px-7 md:px-12 lg:px-32 xl:px-36 sm:py-12 gap-10">
+
+	  {
+		propuestas.map( (propuesta)=>(
+          <article class="flex flex-col pt-8 pb-10 px-10 gap-8 border-2 border-[#0C8CE9] rounded-md">
+			<header class="flex flex-col gap-2">
+	          <h3 class=" text-[#0C8CE9] mx-20 sm:mx-0 sm:w-full text-2xl xs:text-xl sm:text-xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl 3xl:text-5xl font-bold text-left">
+			    {propuesta.nombre}
+			  </h3>
+	          <p class=" text-lg xs:text-base sm:text-xs md:text-xs lg:text-xs xl:text-sm 2xl:text-base 3xl:text-xl sm:text-justify font-inter sm:tracking-normal xl:w-11/12 text-muted-foreground">
+		        {propuesta.descripcion}
+			  </p>
+			</header>
+		    <ul class="flex flex-col gap-5 list-disc pl-4">
+			  {
+			    experimentos.map( (experimento) => (
+		          <li>
+	                <a class=" text-lg xs:text-base sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-lg 3xl:text-2xl sm:text-justify font-inter sm:tracking-wide xl:w-9/12 text-white">
+					  {experimento.nombre}		  		
+	  	  	        </a>
+		          </li>
+				))
+			  }
+		    </ul>
+          </article>
+		))
+	  }
+
+	</section>
+  
+</Layout>
+
+
+

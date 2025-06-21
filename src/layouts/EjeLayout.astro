@@ -125,12 +125,26 @@ const ejesSidebar = Object.values(ejes);
     </div>
     <Sidebar listaEjes={ejesSidebar}/>
     <span class="flex sm:hidden mt-8 items-center">    
-      <span class="h-px flex-1 bg-white/45"></span>
+      <span id="linea" class="h-px flex-1 bg-white/45"></span>
     </span>
     <slot/>
    </div>
 
    
+
+  <div id="contenedorBotonEjes" class="sticky sm:hidden flex justify-end bottom-5 mr-3  text-black z-50 opacity-0 transition-all duration-500 ">
+   <button class="bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 text-white flex justify-between items-center border-2 border-white  rounded-full py-3 px-7 w-[33%]">
+    <p>
+    Ejes
+    </p>
+    <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 3.196L1.63334 8.56266L0.403961 7.33329L7 0.737244L13.596 7.33329L12.3667 8.56266L7 3.196Z" fill="white"/>
+      </svg>
+      
+   </button>
+  </div>
+
+
   </section>
  </section>
 </Layout>

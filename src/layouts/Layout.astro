@@ -28,5 +28,23 @@ const { title } = Astro.props;
 		<slot />
 		<Footer></Footer>
 	</body>
+
+	<script>
+
+const trigger = document.getElementById('linea');
+  const miTarget = document.getElementById('contenedorBotonEjes');
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) 
+        miTarget.classList.replace('opacity-0','opacity-100');
+	  
+    });
+  }, { threshold: 0 });
+
+  obs.observe(trigger);  
+  
+
+	</script>
 </html>
 
