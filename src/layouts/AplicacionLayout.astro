@@ -2,13 +2,92 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const { title } = Astro.props;
 const metadatos = await getCollection("apps");
 
+const nombresExperimentos = [
+	"Material de Apoyo para Estudiar Inteligencia Artificial, Aprendizaje de Máquina y Aprendizaje Profundo",                  
+	"Mathematics with SageMath",
+	"Muon Decay Simulation",
+]
+
+const propuestas = [
+	{
+	  nombre:"1° Version (Aplicaciones con Scroll)",
+	  descripcion: "En esta propuesta, las aplicaciones se integran completamente con la pagina, donde la navegacion sea de manera normal con scroll.",
+	  complejidad:"Dado a que en esta version se deben transformar gran parte de los elementos a un formato diferente a HTML, puede ser un poco mas laborioso en terminos de implementacion.",
+	  consideraciones:"Analizando las aplicaciones, se puede mencionar que hay casos los cuales debido a su complejidad, seria dificil pasarlos al 100% en este formato.",
+	  experimentos: [
+	    {
+		 nombre:nombresExperimentos[0],
+		 ruta:"/aplicaciones-web/aplicacion1-scroll",
+		},
+	    {
+		 nombre:nombresExperimentos[1],
+		 ruta:"/aplicaciones-web/aplicacion2-scroll",
+		 descripcion: metadatos[0]["data"]["description"],
+		 preview: ""
+		},
+	    {
+		 nombre:nombresExperimentos[2],
+		 ruta:"/aplicaciones-web/aplicacion3-scroll",
+		},
+	  ]
+	},
+	{ 
+	  nombre:"2° Version (Aplicaciones en un cuadro)",
+	  descripcion: "En esta otra propuesta, las aplicaciones se envuelven en un cuadro dentro del cual el visitante debe hacer scroll para visualizar el contenido de la aplicacion.",
+	  complejidad:"Entre todas las versiones, esta es la manera mas rapida y segura de migrar las apliciones existentes sin mayor complejidad, siendo lo mas tardado pasarlos al diseño actual.",
+	  consideraciones: "",
+	  experimentos: [
+	    {
+		 nombre:nombresExperimentos[0],
+		 ruta:"/aplicaciones-web/aplicacion1-container",
+		},
+	    {
+		 nombre:nombresExperimentos[1],
+		 ruta:"/aplicaciones-web/aplicacion2-container",
+		 descripcion: metadatos[0]["data"]["description"],
+		 preview: ""
+		},
+	    {
+		 nombre:nombresExperimentos[2],
+		 ruta:"/aplicaciones-web/aplicacion3-container",
+		},
+	  ]
+	},
+	{ 
+	  nombre:"3° Version (Aplicaciones con fondo, orientado mas al diseño)",
+	  descripcion:"Por ultimo, en esta alternativa se hace enfasis en el diseño que se le aplicara a las aplicaciones, colocandoles un degradado.",
+	  complejidad:"",
+	  consideraciones:"",
+	  experimentos: [
+	    {
+		 nombre:nombresExperimentos[0],
+		 ruta:"/aplicaciones-web/aplicacion1-background",
+		},
+	    {
+		 nombre:nombresExperimentos[1],
+		 ruta:"/aplicaciones-web/aplicacion2-background",
+		 descripcion: metadatos[0]["data"]["description"],
+		 preview: ""
+		},
+	    {
+		 nombre:nombresExperimentos[2],
+		 ruta:"/aplicaciones-web/aplicacion3-background",
+		},
+	  ]
+	}
+]
+
+const rutaActual = Astro.url.pathname;
+
+const { title, tipo, indice } = Astro.props;
 const nombreAplicacion = metadatos[0]["data"]["title"];
 const autor = metadatos[0]["data"]["author"];
 const fecha = metadatos[0]["data"]["date"]
 const repositorio = metadatos[0]["data"]["source_code"];
+
+const recomendados = propuestas[indice];
 ---
 
 <Layout title={title}>
@@ -41,6 +120,21 @@ const repositorio = metadatos[0]["data"]["source_code"];
    </article>
 
    <slot/>
+
+   <span class="flex items-center mt-12 mb-9">
+     <span class="h-px flex-1 bg-white"></span>
+   </span>
+
+   <footer class="flex flex-col">
+     <div class="flex justify-between">
+       <h2 class="sm:text-2xl 2xl:text-3xl text-[#0C8CE9] font-medium ">Recomendados por el CIIEC</h2>
+       <a href="/aplicaciones-web" class="font-bold sm:text-base 2xl:text-lg 3xl:text-xl hover:text-white/40 transition-all">VER TODOS  LAS APLICACIONES</a> 
+     </div>
+
+
+	 
+
+   </footer>
    
  </section>
 </Layout>

@@ -5,7 +5,7 @@ import Noticias from '../../components/Noticias.astro';
 import NoticiasMobile from '../../components/NoticiasMobile.astro';
 
 const nombresExperimentos = [
-	"Material de Apoyo para Estudiar Inteligencia Artificial, Aprendizaje de Máquina y Aprendizaje Profundo",                  
+	"Material de Apoyo para Estudiar Inteligencia Artificial, Aprendizaje de Máquina y Aprendizaje Profundo",
 	"Mathematics with SageMath",
 	"Muon Decay Simulation",
 ]
@@ -19,15 +19,15 @@ const propuestas = [
 	  experimentos: [
 	    {
 		 nombre:nombresExperimentos[0],
-		 ruta:"/aplicaciones-web/aplicacion1",
+		 ruta:"/aplicaciones-web/aplicacion1-scroll",
 		},
 	    {
 		 nombre:nombresExperimentos[1],
-		 ruta:"/aplicaciones-web/aplicacion2",
+		 ruta:"/aplicaciones-web/aplicacion2-scroll",
 		},
 	    {
 		 nombre:nombresExperimentos[2],
-		 ruta:"/aplicaciones-web/aplicacion3",
+		 ruta:"/aplicaciones-web/aplicacion3-scroll",
 		},
 	  ]
 	},
@@ -129,9 +129,9 @@ const propuestas = [
 			</header>
 		    <ul class="flex flex-col gap-5 list-disc pl-4">
 			  {
-			    propuesta.experimentos.map( (experimento) => (
+			    propuesta.experimentos.map( (experimento) => experimento.nombre.includes("SageMath") && (
 		          <li>
-	                <a href={experimento.nombre.includes("SageMath") ? experimento.ruta : "/aplicaciones-web"} class=" text-lg xs:text-base sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-lg 3xl:text-2xl sm:text-justify font-inter sm:tracking-wide xl:w-9/12 text-white">
+	                <a href={experimento.nombre.includes("SageMath") ? experimento.ruta : "/aplicaciones-web"} class=" text-lg xs:text-base sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-lg 3xl:text-2xl sm:text-justify font-inter sm:tracking-wide xl:w-9/12 text-white hover:text-white/50 transition-all">
 					  {experimento.nombre}		  		
 	  	  	        </a>
 		          </li>
