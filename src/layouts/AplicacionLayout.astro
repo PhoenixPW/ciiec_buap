@@ -121,16 +121,28 @@ const recomendados = propuestas[indice];
 
    <slot/>
 
-   <span class="flex items-center mt-12 mb-9">
+   <span class="flex items-center mt-12 3xl:mt-16 mb-9">
      <span class="h-px flex-1 bg-white"></span>
    </span>
 
    <footer class="flex flex-col">
      <div class="flex justify-between">
        <h2 class="sm:text-2xl 2xl:text-3xl text-[#0C8CE9] font-medium ">Recomendados por el CIIEC</h2>
-       <a href="/aplicaciones-web" class="font-bold sm:text-base 2xl:text-lg 3xl:text-xl hover:text-white/40 transition-all">VER TODOS  LAS APLICACIONES</a> 
+       <a href="/aplicaciones-web" class="font-bold sm:text-base 2xl:text-lg 3xl:text-xl hover:text-white/40 transition-all">VER TODAS  LAS APLICACIONES</a> 
      </div>
 
+	 <section class="flex justify-between mt-16 3xl:mt-20 gap-24 3xl:gap-28" >
+	   {
+	     propuestas.map((propuesta) => (
+		   <a href={recomendados.experimentos[1].ruta} class="group flex flex-col px-6 3xl:px-9 py-7 3xl:py-10 border-2 border-[#0C8CE9] hover:shadow-lg hover:shadow-[#0C8CE9] rounded-2xl gap-5 3xl:gap-8 transition-all duration-500">
+			 <img src="/app2Background.png"/>
+		     <h3 class="text-[#0C8CE9] group-hover:text-white/90 text-lg 3xl:text-xl font-bold transition-all duration-700">{recomendados.experimentos[1].nombre}</h3>
+			 <p class="sm:text-sm xl:text-base 3xl:text-lg text-white/85 group-hover:text-[#0C8CE9] transition-all duration-500">{recomendados.experimentos[1].descripcion}</p>
+
+		   </a>
+		 ))
+	   }
+	 </section>
 
 	 
 
