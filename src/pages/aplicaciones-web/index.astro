@@ -12,8 +12,8 @@ const nombresExperimentos = [
 
 const propuestas = [
 	{
-	  nombre:"1° Version (Aplicaciones con Scroll)",
-	  descripcion: "En esta propuesta, las aplicaciones se integran completamente con la pagina, donde la navegacion sea de manera normal con scroll.",
+	  nombre:"1° Version (Aplicaciones integradas)",
+	  descripcion: "En esta propuesta, las aplicaciones están integradas en la página, permitiendo una navegación fluida por el contenido de las aplicaciones mediante scroll.",
 	  complejidad:"Dado a que en esta version se deben transformar gran parte de los elementos a un formato diferente a HTML, puede ser un poco mas laborioso en terminos de implementacion.",
 	  consideraciones:"Analizando las aplicaciones, se puede mencionar que hay casos los cuales debido a su complejidad, seria dificil pasarlos al 100% en este formato.",
 	  experimentos: [
@@ -129,9 +129,9 @@ const propuestas = [
 			</header>
 		    <ul class="flex flex-col gap-5 list-disc pl-4">
 			  {
-			    propuesta.experimentos.map( (experimento) => experimento.nombre.includes("SageMath") && (
+			    propuesta.experimentos.map( (experimento) => !experimento.nombre.includes("Muon") && (
 		          <li>
-	                <a href={experimento.nombre.includes("SageMath") ? experimento.ruta : "/aplicaciones-web"} class=" text-lg xs:text-base sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-lg 3xl:text-2xl sm:text-justify font-inter sm:tracking-wide xl:w-9/12 text-white hover:text-white/50 transition-all">
+	                <a href={!experimento.nombre.includes("Muon") ? experimento.ruta : "/aplicaciones-web"} class=" text-lg xs:text-base sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-lg 3xl:text-2xl sm:text-justify font-inter sm:tracking-wide xl:w-9/12 text-white hover:text-white/50 transition-all">
 					  {experimento.nombre}		  		
 	  	  	        </a>
 		          </li>

@@ -8,7 +8,7 @@ import AplicacionLayout from '../../layouts/AplicacionLayout.astro';
 const metadatos = await getCollection("apps");
 ---
 
-<AplicacionLayout title="SageMath Scroll" tipo="scroll" indice={0}>
+<AplicacionLayout title="SageMath Scroll" tipo="scroll" indice={0} numeroExperimento={0}>
 
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.5.0/math.min.js" type="text/javascript"></script>
 <script is:inline type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
@@ -85,7 +85,7 @@ box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba
 <p class="sm:text-xl 2xl:text-2xl" style="color:white;"> SageMath (previously SAGE, "System for Algebra and Geometry Experimentation") is a free and open-source computer algebra system covering many aspects of mathematics. <br> <br>
 
 
-This Web App illustrates the use of  <a href="https://www.sagemath.org/">SageMath</a> to perform simple or advanced mathematics on a webpage with no need to install any software. <br> <br> You can edit and experiment with the code on the following <a href="https://sagecell.sagemath.org/?q=iyqcsn"> SageMathCells</a>. There are many  good tutorials on the use of SageMath, for instance <a href="https://doc.sagemath.org/html/en/tutorial/index.html">here</a> and <a href="https://melczer.ca/files/SageIntro.html">here</a>.
+This Web App illustrates the use of  <a href="https://www.sagemath.org/" class="text-[#0C8CE9] underline hover:no-underline hover:text-gray-500/75 transition-all">SageMath</a> to perform simple or advanced mathematics on a webpage with no need to install any software. <br> <br> You can edit and experiment with the code on the following <a href="https://sagecell.sagemath.org/?q=iyqcsn" class="text-[#0C8CE9] underline hover:no-underline hover:text-gray-500/75 transition-all"> SageMathCells</a>. There are many  good tutorials on the use of SageMath, for instance <a href="https://doc.sagemath.org/html/en/tutorial/index.html" class="text-[#0C8CE9] underline hover:no-underline hover:text-gray-500/75 transition-all">here</a> and <a href="https://melczer.ca/files/SageIntro.html" class="text-[#0C8CE9] underline hover:no-underline hover:text-gray-500/75 transition-all">here</a>.
 <br> <br>
 
 

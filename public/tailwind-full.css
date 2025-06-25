@@ -707,6 +707,11 @@ body{
   margin-right: 5rem;
 }
 
+.mx-7{
+  margin-left: 1.75rem;
+  margin-right: 1.75rem;
+}
+
 .mx-8{
   margin-left: 2rem;
   margin-right: 2rem;
@@ -720,6 +725,10 @@ body{
 .my-6{
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.mb-0{
+  margin-bottom: 0px;
 }
 
 .mb-10{
@@ -768,10 +777,6 @@ body{
 
 .mt-16{
   margin-top: 4rem;
-}
-
-.mt-24{
-  margin-top: 6rem;
 }
 
 .mt-5{
@@ -831,10 +836,6 @@ body{
   height: 1rem;
 }
 
-.h-5\/6{
-  height: 83.333333%;
-}
-
 .h-6{
   height: 1.5rem;
 }
@@ -847,8 +848,8 @@ body{
   height: 500px;
 }
 
-.h-dvh{
-  height: 100dvh;
+.h-\[76dvh\]{
+  height: 76dvh;
 }
 
 .h-full{
@@ -925,6 +926,10 @@ body{
 
 .w-\[500px\]{
   width: 500px;
+}
+
+.w-\[54\%\]{
+  width: 54%;
 }
 
 .w-fit{
@@ -1126,6 +1131,10 @@ body{
   border-radius: 9999px;
 }
 
+.rounded-lg{
+  border-radius: var(--radius);
+}
+
 .rounded-md{
   border-radius: calc(var(--radius) - 2px);
 }
@@ -1178,6 +1187,11 @@ body{
 .border-\[\#0C8CE9\]{
   --tw-border-opacity: 1;
   border-color: rgb(12 140 233 / var(--tw-border-opacity));
+}
+
+.border-blue-500{
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity));
 }
 
 .border-white{
@@ -1338,8 +1352,16 @@ body{
   padding: 0.5rem;
 }
 
+.p-3{
+  padding: 0.75rem;
+}
+
 .p-7{
   padding: 1.75rem;
+}
+
+.p-9{
+  padding: 2.25rem;
 }
 
 .px-10{
@@ -1430,6 +1452,10 @@ body{
 
 .pl-0{
   padding-left: 0px;
+}
+
+.pl-10{
+  padding-left: 2.5rem;
 }
 
 .pl-3{
@@ -1594,6 +1620,10 @@ body{
 
 .text-white\/85{
   color: rgb(255 255 255 / 0.85);
+}
+
+.underline{
+  text-decoration-line: underline;
 }
 
 .antialiased{
@@ -1801,6 +1831,10 @@ body{
 
 .hover\:text-white\/50:hover{
   color: rgb(255 255 255 / 0.5);
+}
+
+.hover\:no-underline:hover{
+  text-decoration-line: none;
 }
 
 .hover\:shadow-lg:hover{
@@ -2805,6 +2839,14 @@ body{
     margin-bottom: 1.75rem;
   }
 
+  .\33xl\:mb-24{
+    margin-bottom: 6rem;
+  }
+
+  .\33xl\:mb-5{
+    margin-bottom: 1.25rem;
+  }
+
   .\33xl\:ml-16{
     margin-left: 4rem;
   }
@@ -2815,6 +2857,10 @@ body{
 
   .\33xl\:mt-20{
     margin-top: 5rem;
+  }
+
+  .\33xl\:mt-7{
+    margin-top: 1.75rem;
   }
 
   .\33xl\:h-11{
@@ -2958,9 +3004,9 @@ body{
     line-height: 2rem;
   }
 
-  .\33xl\:text-4xl{
-    font-size: 2.25rem;
-    line-height: 2.5rem;
+  .\33xl\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .\33xl\:text-5xl{

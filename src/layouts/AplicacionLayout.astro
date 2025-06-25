@@ -20,12 +20,14 @@ const propuestas = [
 	    {
 		 nombre:nombresExperimentos[0],
 		 ruta:"/aplicaciones-web/aplicacion1-scroll",
+		 descripcion: metadatos[1]["data"]["description"],
+		 preview: "/app1.png"
 		},
 	    {
 		 nombre:nombresExperimentos[1],
 		 ruta:"/aplicaciones-web/aplicacion2-scroll",
 		 descripcion: metadatos[0]["data"]["description"],
-		 preview: ""
+		 preview: "/app2Background.png"
 		},
 	    {
 		 nombre:nombresExperimentos[2],
@@ -42,12 +44,14 @@ const propuestas = [
 	    {
 		 nombre:nombresExperimentos[0],
 		 ruta:"/aplicaciones-web/aplicacion1-container",
+		 descripcion: metadatos[1]["data"]["description"],
+		 preview: "/app1Background.png"
 		},
 	    {
 		 nombre:nombresExperimentos[1],
 		 ruta:"/aplicaciones-web/aplicacion2-container",
 		 descripcion: metadatos[0]["data"]["description"],
-		 preview: ""
+		 preview: "/app2Background.png"
 		},
 	    {
 		 nombre:nombresExperimentos[2],
@@ -64,12 +68,14 @@ const propuestas = [
 	    {
 		 nombre:nombresExperimentos[0],
 		 ruta:"/aplicaciones-web/aplicacion1-background",
+		 descripcion: metadatos[1]["data"]["description"],
+		 preview: "/app1Background.png"
 		},
 	    {
 		 nombre:nombresExperimentos[1],
 		 ruta:"/aplicaciones-web/aplicacion2-background",
 		 descripcion: metadatos[0]["data"]["description"],
-		 preview: ""
+		 preview: "/app2Background.png"
 		},
 	    {
 		 nombre:nombresExperimentos[2],
@@ -81,11 +87,11 @@ const propuestas = [
 
 const rutaActual = Astro.url.pathname;
 
-const { title, tipo, indice } = Astro.props;
-const nombreAplicacion = metadatos[0]["data"]["title"];
-const autor = metadatos[0]["data"]["author"];
-const fecha = metadatos[0]["data"]["date"]
-const repositorio = metadatos[0]["data"]["source_code"];
+const { title, tipo, indice, numeroExperimento } = Astro.props;
+const nombreAplicacion = metadatos[numeroExperimento]["data"]["title"];
+const autor = metadatos[numeroExperimento]["data"]["author"];
+const fecha = metadatos[numeroExperimento]["data"]["date"]
+const repositorio = metadatos[numeroExperimento]["data"]["source_code"];
 
 const recomendados = propuestas[indice];
 ---
@@ -99,19 +105,19 @@ const recomendados = propuestas[indice];
  </div>
 
  <section class="relative lg:px-20 3xl:px-24 lg:py-36 3xl:py-44">
-   <h1 class="font-bold sm:text-4xl 2xl:text-5xl 3xl:text-6xl text-[#0C8CE9]"> {nombreAplicacion}</h1>
+   <h1 class="font-bold sm:text-4xl 2xl:text-4xl 3xl:text-5xl text-[#0C8CE9]"> {nombreAplicacion}</h1>
    
-   <span class="flex items-center mt-5 mb-3">
+   <span class="flex items-center mt-5 3xl:mt-7 mb-3 3xl:mb-5">
      <span class="h-px flex-1 bg-white"></span>
    </span>
 
-   <article class=`flex justify-between items-center ${indice == 1 ? "mb-0" :"mb-16"}`>
-     <p class="sm:text-2xl 2xl:text-3xl 3xl:text-4xl ">
+   <article class=`flex justify-between items-center ${indice == 1 ? "mb-0" :"mb-16 3xl:mb-24"}`>
+     <p class="sm:text-xl 2xl:text-2xl 3xl:text-3xl ">
        {autor} {fecha}    
      </p>
      <article class="flex gap-4 items-center">
-       <p class="font-bold sm:text-lg 2xl:text-xl 3xl:text-2xl">
-         Codigo fuente:
+       <p class="font-bold sm:text-lg 2xl:text-lg 3xl:text-xl">
+         CODIGO FUENTE :
        </p>
          <a href={repositorio}>
            <svg class="w-8" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.976 0A7.977 7.977 0 0 0 0 7.976c0 3.522 2.3 6.507 5.431 7.584.392.049.538-.196.538-.392v-1.37c-2.201.49-2.69-1.076-2.69-1.076-.343-.93-.881-1.175-.881-1.175-.734-.489.048-.489.048-.489.783.049 1.224.832 1.224.832.734 1.223 1.859.88 2.3.685.048-.538.293-.88.489-1.076-1.762-.196-3.621-.881-3.621-3.964 0-.88.293-1.566.832-2.153-.05-.147-.343-.978.098-2.055 0 0 .685-.196 2.201.832.636-.196 1.322-.245 2.007-.245s1.37.098 2.006.245c1.517-1.027 2.202-.832 2.202-.832.44 1.077.146 1.908.097 2.104a3.16 3.16 0 0 1 .832 2.153c0 3.083-1.86 3.719-3.62 3.915.293.244.538.733.538 1.467v2.202c0 .196.146.44.538.392A7.984 7.984 0 0 0 16 7.976C15.951 3.572 12.38 0 7.976 0z"></path></g></svg>
@@ -134,10 +140,10 @@ const recomendados = propuestas[indice];
 	 <section class="flex justify-between mt-16 3xl:mt-20 gap-24 3xl:gap-28" >
 	   {
 	     propuestas.map((propuesta) => (
-		   <a href={recomendados.experimentos[1].ruta} class="group flex flex-col px-6 3xl:px-9 py-7 3xl:py-10 border-2 border-[#0C8CE9] hover:shadow-lg hover:shadow-[#0C8CE9] rounded-2xl gap-5 3xl:gap-8 transition-all duration-500">
-			 <img src="/app2Background.png"/>
-		     <h3 class="text-[#0C8CE9] group-hover:text-white/90 text-lg 3xl:text-xl font-bold transition-all duration-700">{recomendados.experimentos[1].nombre}</h3>
-			 <p class="sm:text-sm xl:text-base 3xl:text-lg text-white/85 group-hover:text-[#0C8CE9] transition-all duration-500">{recomendados.experimentos[1].descripcion}</p>
+		   <a href={propuesta.experimentos[numeroExperimento].ruta} class="group flex flex-col px-6 3xl:px-9 py-7 3xl:py-10 border-2 border-[#0C8CE9] hover:shadow-lg hover:shadow-[#0C8CE9] rounded-2xl gap-5 3xl:gap-8 transition-all duration-500">
+			 <img src={propuesta.experimentos[numeroExperimento].preview}/>
+		     <h3 class="text-[#0C8CE9] group-hover:text-white/90 text-lg 3xl:text-xl font-bold transition-all duration-700">{propuesta.experimentos[numeroExperimento].nombre}</h3>
+			 <p class="sm:text-sm xl:text-base 3xl:text-lg text-white/85 group-hover:text-[#0C8CE9] transition-all duration-500">{propuesta.experimentos[numeroExperimento].descripcion}</p>
 
 		   </a>
 		 ))
