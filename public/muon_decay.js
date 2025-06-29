@@ -40,11 +40,6 @@ for (var i = 0; i < 21000; i=i+8) {
 }
 
 var my_element = document.getElementById("my_element");
-my_element.scrollIntoView({
-  behavior: "smooth",
-  block: "start",
-  inline: "nearest"
-});
 var start_stop = document.getElementById("start_stop");
 
 function step(){
