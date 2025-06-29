@@ -1,0 +1,228 @@
+---
+import AplicacionLayout from '../../layouts/AplicacionLayout.astro'
+---
+
+<AplicacionLayout
+	title="Muon Decay Integracion"
+	tipo="scroll"
+	indice={0}
+	numeroExperimento={2}
+>
+		<script is:inline src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+		<script
+			is:inline
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+		></script>
+		<script is:inline type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				tex2jax: {
+					inlineMath: [
+						['$', '$'],
+						['\\(', '\\)']
+					]
+				}
+			})
+		</script>
+
+	<div class="flex flex-col text-white gap-10">
+		<p class="sm:text-xl 2xl:text-2xl">
+			The <a
+				href="https://www.wondriumdaily.com/cosmic-rays-and-the-discovery-of-the-unseen-particles/"
+				class="text-[#0C8CE9] underline hover:no-underline hover:text-gray-500/75 transition-all"
+				>muon</a> is a subatomic particle discovered in cosmic rays in 1937 by Carl Anderson and Seth Neddermeyer.
+			It decays by means of the weak force with the decay modes $$ \boldsymbol{'{'}\mu ^-
+			\rightarrow e^- + \overline{'{'}v{'}'}_e + v_{'{'}\mu{'}'}{'}'}
+			$$ $$ \boldsymbol{'{'}\mu ^+ \rightarrow e^+ + {'{'}v{'}'}_e + \overline{'{'}v{'}'}_{'{'}\mu{
+				'}'
+			}{'}'}
+			$$ with a lifetime in vacuum of 2.19 $\mu s $, however, when negative muons decay in a medium,
+			besides decaying they can be captured by protons of the nuclei of the medium $$ \boldsymbol{
+				'{'
+			}\mu ^- + p \rightarrow n + v_{'{'}\mu{'}'}{'}'}, $$ resulting in an average measurement of
+			the lifetime of positive and negative muons lower than 2.19 $\mu s $.
+		</p>
+
+		<section class="">
+			<h2 class="mb-6 font-bold text-[#0C8CE9] sm:text-2xl 2xl:text-3xl">Muon Decay Experiment</h2>
+
+			<p class="sm:text-xl 2xl:text-2xl">
+				A typical table-top experiment to study muon decays measures the time between a first pulse,
+				produced by a low-energy muon from the secondary cosmic rays that reaches and stops inside a
+				detector, and a second pulse due to an electron or positron resulting from the muon decay.
+				These pulses can be produced by the interaction of the muon in a solid or liquid
+				scintillator material or by Cherenkov effect in a water container. In turn, the tiny light
+				produced can be amplified by a photomultiplier tube coupled to the detector material. More
+				details can be found <a
+					href="https://pubs.aip.org/aip/acp/article/422/1/333/633457/Muon-lifetime-measurement"
+					class="text-[#0C8CE9] underline hover:no-underline hover:text-gray-500/75 transition-all"
+					>here</a
+				>. The background noise consists of two pulses produced by two muons that enter the detector
+				in coincidence within a short time window, in our case of 20 $\mu s$.
+			</p>
+		</section>
+		<section class="">
+			<h2 class="mb-6 font-bold text-[#0C8CE9] sm:text-2xl 2xl:text-3xl">Muon Decay Simulation</h2>
+			<p class="sm:text-xl 2xl:text-2xl">
+				We simulate double pulses within a time window of 20 $\mu s$. Both pulses are exponential
+				with a decay time of 100 ns. The first pulse has a random amplitude between 20 mV and 80 mV
+				and the second pulse between 20 mV and 50 mV. These values are arbitrary for the purpose of
+				the simulation. The time interval between the 2 pulses is chosen between 0 and 20 $\mu s$
+				with a probability distribution given by $$ P(t) = A +B e^{'{'}-\frac{'{'}t{'}'}{'{'}\tau{
+					'}'
+				}{'}'}
+				$$ where $P(t)dt $ is the probability that the second pulse occurs between $t$ and $t+dt$ given
+				that the first pulse occurs at $t=0$ The relation between A and B controls the amount of background
+				noise. We arbitrarily select $$ \tau = 2.000 \: \mu s \\ A = 0.1 \\ B = 1.0 $$ so that the average
+				background noise is half the number of events, i.e., in average the signal and the background
+				noise are equal. This is due to the fact that the area under the signal curve ($Ae^{
+					'{'
+				}-\frac{'{'}t{'}'}{'{'}\tau{'}'}{'}'}$) is equal to the area under the background noise
+				curve ($B$). The simulated pulses are sampled every 8 ns.
+				<br />
+				<br />
+				A similar simulation written in Python can be found <a
+					href="https://github.com/lvillasen/Muon-Decay-Simulations"
+					class="text-[#0C8CE9] underline hover:no-underline hover:text-gray-500/75 transition-all">here</a
+				>.
+			</p>
+		</section>
+		<section class="">
+			<h2 class="mb-6 font-bold text-[#0C8CE9] sm:text-2xl 2xl:text-3xl">Data Analysis</h2>
+
+			<p class="sm:text-xl 2xl:text-2xl">
+				We estimate the background noise by counting the number of events between 10 $\mu s$ and 20
+				$\mu s$ and multiplying this number by 2, under the assumtion that the background noise due
+				to double coincidences has a flat distribution. Then we subtract the estimated background
+				noise from the data and take the natural logarithm to convert the exponential distribution
+				to a <a
+					href="https://www.spiceworks.com/tech/artificial-intelligence/articles/what-is-linear-regression/"
+					class="text-[#0C8CE9] underline hover:no-underline hover:text-gray-500/75 transition-all"
+					>linear regression</a
+				> problem.
+
+				<br />
+				<br />
+				We use a weighted least squares method to estimate the values of the slope $m$, the y-intercept
+				$b$ and the standard error on the slope.
+			</p>
+
+			<hr />
+
+			<div class="mt-8 block_container" style="background-color: #00b5e2; width:100%;">
+				<div id="plot1" class="h-[460px]" style=" border:solid 5px #003b5c; width:100%;"></div>
+			</div>
+
+			<div id="block_container" class="my-6 flex items-center justify-between gap-8 px-2">
+				<article class="flex items-center gap-5">
+					<input
+						class="inline-flex w-fit cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md bg-primary px-8 py-2 font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 xl:text-base 3xl:text-lg"
+						type="button"
+						id="start_stop"
+						value="Start"
+						onclick="start();"
+					/>
+					<input
+						class="w-fit cursor-pointer rounded-md border-[2px] border-white bg-background/80 px-8 py-2 text-white backdrop-blur-md transition-all hover:border-[#0C8CE9] hover:text-[#0C8CE9] supports-[backdrop-filter]:bg-background/60"
+						type="button"
+						id="sreset"
+						value="Reset"
+						onclick="reset();"
+					/>
+				</article>
+
+				<article class="flex items-center gap-5">
+					<label class="text-lg"> Display Rate </label>
+					<article class="relative">
+						<select
+							id="rate"
+							class="mt-0.5 w-fit appearance-none rounded border-gray-300 py-2 pl-4 pr-8 text-black shadow-sm sm:text-sm dark:border-gray-600 dark:bg-gray-900 dark:text-white"
+							onchange="step()"
+						>
+							<option value="1" selected>1</option>
+							<option value="100">Faster</option>
+						</select>
+						<svg
+							class="pointer-events-none absolute right-2 top-2.5 h-5 w-5 text-[#1D2758]"
+							viewBox="0 0 20 20"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+								id="SVGRepo_tracerCarrier"
+								stroke-linecap="round"
+								stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z"
+									fill="currentColor"></path>
+							</g></svg
+						>
+					</article>
+				</article>
+
+				<article class="flex items-center gap-5">
+					<label class="text-lg"> First Bin in Fit </label>
+					<article class="relative">
+						<select
+							id="bin"
+							class="mt-0.5 w-fit appearance-none rounded border-gray-300 py-2 pl-4 pr-9 text-black shadow-sm sm:text-sm dark:border-gray-600 dark:bg-gray-900 dark:text-white"
+							onchange="draw()"
+						>
+							<option value="1" selected>1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+						<svg
+							class="pointer-events-none absolute right-2 top-2.5 h-5 w-5 text-[#1D2758]"
+							viewBox="0 0 20 20"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+								id="SVGRepo_tracerCarrier"
+								stroke-linecap="round"
+								stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z"
+									fill="currentColor"></path>
+							</g></svg
+						>
+					</article>
+				</article>
+
+				<article class="flex items-center gap-4">
+					<input
+						id="back_subtracted"
+						class="size-5 rounded border-gray-300 shadow-sm"
+						type="checkbox"
+						onchange="draw()"
+					/>
+					<label class="text-lg"> Background Subtracted </label>
+				</article>
+
+				<article class="flex items-center gap-4">
+					<input
+						id="logscale"
+						class="size-5 rounded border-gray-300 shadow-sm"
+						type="checkbox"
+						onchange="draw()"
+					/>
+					<label class="text-lg"> Log Scale </label>
+				</article>
+			</div>
+
+			<div id="my_element" class="block_container" style="background-color: #00b5e2; width:100%;">
+				<div id="plot2" class="h-[460px]" style=" border:solid 5px #003b5c; width:100%;"></div>
+			</div>
+
+			<br />
+		</section>
+
+		<script is:inline type="text/javascript" src="/muon_decay.js"></script>
+	</div>
+</AplicacionLayout>

@@ -52,8 +52,8 @@ const propuestas = [
 	  ]
 	},
 	{ 
-	  nombre:"3° Version (Aplicaciones con fondo, orientado mas al diseño)",
-	  descripcion:"Por ultimo, en esta alternativa se hace enfasis en el diseño que se le aplicara a las aplicaciones, colocandoles un degradado.",
+	  nombre:"3° Version (Orientada mas al diseño)",
+	  descripcion:"Por ultimo, en esta alternativa se hace enfasis en el diseño que se le aplicara a las aplicaciones, colocandoles un degradado o bordes.",
 	  complejidad:"",
 	  consideraciones:"",
 	  experimentos: [
@@ -129,9 +129,9 @@ const propuestas = [
 			</header>
 		    <ul class="flex flex-col gap-5 list-disc pl-4">
 			  {
-			    propuesta.experimentos.map( (experimento) => !experimento.nombre.includes("Muon") && (
+			    propuesta.experimentos.map( (experimento) => (
 		          <li>
-	                <a href={!experimento.nombre.includes("Muon") ? experimento.ruta : "/aplicaciones-web"} class=" text-lg xs:text-base sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-lg 3xl:text-2xl sm:text-justify font-inter sm:tracking-wide xl:w-9/12 text-white hover:text-white/50 transition-all">
+	                <a href={experimento.ruta} class=" text-lg xs:text-base sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-lg 3xl:text-2xl sm:text-justify font-inter sm:tracking-wide xl:w-9/12 text-white hover:text-white/50 transition-all">
 					  {experimento.nombre}		  		
 	  	  	        </a>
 		          </li>

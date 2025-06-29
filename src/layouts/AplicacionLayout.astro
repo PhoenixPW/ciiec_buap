@@ -32,6 +32,8 @@ const propuestas = [
 	    {
 		 nombre:nombresExperimentos[2],
 		 ruta:"/aplicaciones-web/aplicacion3-scroll",
+		 descripcion: metadatos[2]["data"]["description"],
+		 preview: "/app3Scroll.png"
 		},
 	  ]
 	},
@@ -56,6 +58,8 @@ const propuestas = [
 	    {
 		 nombre:nombresExperimentos[2],
 		 ruta:"/aplicaciones-web/aplicacion3-container",
+		 descripcion: metadatos[2]["data"]["description"],
+		 preview: "/app3Container.png"
 		},
 	  ]
 	},
@@ -80,6 +84,8 @@ const propuestas = [
 	    {
 		 nombre:nombresExperimentos[2],
 		 ruta:"/aplicaciones-web/aplicacion3-background",
+		 descripcion: metadatos[2]["data"]["description"],
+		 preview: "/app3Scroll.png"
 		},
 	  ]
 	}
@@ -104,19 +110,19 @@ const recomendados = propuestas[indice];
 	<div class="absolute bottom-0 left-0 h-[500px] w-[500px] bg-purple-500/10 blur-[100px]" />
  </div>
 
- <section class="relative lg:px-20 3xl:px-24 lg:py-36 3xl:py-44">
-   <h1 class="font-bold sm:text-4xl 2xl:text-4xl 3xl:text-5xl text-[#0C8CE9]"> {nombreAplicacion}</h1>
+ <section class="relative sm:px-12 xl:px-16 2xl:px-20 3xl:px-24 lg:py-36 3xl:py-44">
+   <h1 class="font-bold sm:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl text-[#0C8CE9]"> {nombreAplicacion}</h1>
    
    <span class="flex items-center mt-5 3xl:mt-7 mb-3 3xl:mb-5">
      <span class="h-px flex-1 bg-white"></span>
    </span>
 
    <article class=`flex justify-between items-center ${indice == 1 ? "mb-0" :"mb-16 3xl:mb-24"}`>
-     <p class="sm:text-xl 2xl:text-2xl 3xl:text-3xl ">
+     <p class="sm:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl ">
        {autor} {fecha}    
      </p>
      <article class="flex gap-4 items-center">
-       <p class="font-bold sm:text-lg 2xl:text-lg 3xl:text-xl">
+       <p class="font-bold sm:text-base xl:text-lg 2xl:text-lg 3xl:text-xl">
          CODIGO FUENTE :
        </p>
          <a href={repositorio}>
@@ -138,12 +144,14 @@ const recomendados = propuestas[indice];
      </div>
 
 	 <section class="flex justify-between mt-16 3xl:mt-20 gap-24 3xl:gap-28" >
+		
 	   {
-	     propuestas.map((propuesta) => (
-		   <a href={propuesta.experimentos[numeroExperimento].ruta} class="group flex flex-col px-6 3xl:px-9 py-7 3xl:py-10 border-2 border-[#0C8CE9] hover:shadow-lg hover:shadow-[#0C8CE9] rounded-2xl gap-5 3xl:gap-8 transition-all duration-500">
-			 <img src={propuesta.experimentos[numeroExperimento].preview}/>
-		     <h3 class="text-[#0C8CE9] group-hover:text-white/90 text-lg 3xl:text-xl font-bold transition-all duration-700">{propuesta.experimentos[numeroExperimento].nombre}</h3>
-			 <p class="sm:text-sm xl:text-base 3xl:text-lg text-white/85 group-hover:text-[#0C8CE9] transition-all duration-500">{propuesta.experimentos[numeroExperimento].descripcion}</p>
+		
+	     recomendados.experimentos.map((experimento, indice) => (
+		   <a href={experimento.ruta} class="group flex flex-col px-6 3xl:px-9 py-7 3xl:py-10 border-2 border-[#0C8CE9] hover:shadow-lg hover:shadow-[#0C8CE9] rounded-2xl gap-5 3xl:gap-8 transition-all duration-500">
+			 <img src={experimento.preview}/>
+		     <h3 class="text-[#0C8CE9] group-hover:text-white/90 xl:text-lg 3xl:text-xl font-bold transition-all duration-700">{experimento.nombre}</h3>
+			 <p class="sm:text-xs xl:text-base 3xl:text-lg text-white/85 group-hover:text-[#0C8CE9] transition-all duration-500">{experimento.descripcion}</p>
 
 		   </a>
 		 ))
