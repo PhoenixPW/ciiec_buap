@@ -33,15 +33,13 @@
 				href="https://www.wondriumdaily.com/cosmic-rays-and-the-discovery-of-the-unseen-particles/"
 				class="text-[#0C8CE9] underline hover:no-underline hover:text-gray-500/75 transition-all"
 				>muon</a> is a subatomic particle discovered in cosmic rays in 1937 by Carl Anderson and Seth Neddermeyer.
-			It decays by means of the weak force with the decay modes $$ \boldsymbol{'{'}\mu ^-
-			\rightarrow e^- + \overline{'{'}v{'}'}_e + v_{'{'}\mu{'}'}{'}'}
-			$$ $$ \boldsymbol{'{'}\mu ^+ \rightarrow e^+ + {'{'}v{'}'}_e + \overline{'{'}v{'}'}_{'{'}\mu{
-				'}'
-			}{'}'}
+			It decays by means of the weak force with the decay modes $$ \boldsymbol{\mu ^-
+			\rightarrow e^- + \overline{v}_e + v_{\mu}}
+			$$ $$ \boldsymbol{\mu ^+ \rightarrow e^+ + {v}_e + \overline{v}_{\mu}}
 			$$ with a lifetime in vacuum of 2.19 $\mu s $, however, when negative muons decay in a medium,
-			besides decaying they can be captured by protons of the nuclei of the medium $$ \boldsymbol{
-				'{'
-			}\mu ^- + p \rightarrow n + v_{'{'}\mu{'}'}{'}'}, $$ resulting in an average measurement of
+			besides decaying they can be captured by protons of the nuclei of the medium $$ \boldsymbol
+				{
+			\mu ^- + p \rightarrow n + v_{\mu}}, $$ resulting in an average measurement of
 			the lifetime of positive and negative muons lower than 2.19 $\mu s $.
 		</p>
 
@@ -70,16 +68,16 @@
 				with a decay time of 100 ns. The first pulse has a random amplitude between 20 mV and 80 mV
 				and the second pulse between 20 mV and 50 mV. These values are arbitrary for the purpose of
 				the simulation. The time interval between the 2 pulses is chosen between 0 and 20 $\mu s$
-				with a probability distribution given by $$ P(t) = A +B e^{'{'}-\frac{'{'}t{'}'}{'{'}\tau{
-					'}'
-				}{'}'}
+				with a probability distribution given by $$ P(t) = A +B e^{-\frac{t}{\tau
+					}
+				}
 				$$ where $P(t)dt $ is the probability that the second pulse occurs between $t$ and $t+dt$ given
 				that the first pulse occurs at $t=0$ The relation between A and B controls the amount of background
 				noise. We arbitrarily select $$ \tau = 2.000 \: \mu s \\ A = 0.1 \\ B = 1.0 $$ so that the average
 				background noise is half the number of events, i.e., in average the signal and the background
-				noise are equal. This is due to the fact that the area under the signal curve ($Ae^{
-					'{'
-				}-\frac{'{'}t{'}'}{'{'}\tau{'}'}{'}'}$) is equal to the area under the background noise
+				noise are equal. This is due to the fact that the area under the signal curve ($Ae^
+					{
+				-\frac{t}{\tau}}$) is equal to the area under the background noise
 				curve ($B$). The simulated pulses are sampled every 8 ns.
 				<br />
 				<br />
